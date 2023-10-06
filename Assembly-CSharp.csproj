@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{05F7E6CA-A27D-87BE-C752-B8F726309A35}</ProjectGuid>
+    <ProjectGuid>{8D08496A-BDEE-7724-9131-E3C0970C1E56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\Boss\BossRock.cs" />
     <Compile Include="Assets\Script\Boss\BossMob.cs" />
     <Compile Include="Assets\Script\Missile.cs" />
+    <Compile Include="Assets\Script\StartZone.cs" />
     <Compile Include="Assets\Script\PlayerMob.cs" />
     <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\QuarterView 3D Action BE5\ReadMe\Scripts\ReadmeBE5.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\StartZone.cs" />
+    <Compile Include="Assets\Script\GenericSinglngton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
