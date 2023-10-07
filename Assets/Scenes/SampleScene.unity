@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -256,6 +256,7 @@ MonoBehaviour:
   enemyCntB: 0
   enemyCntC: 0
   enemyCntD: 0
+  score: 0
   menuPanal: {fileID: 1958525638}
   gamePanal: {fileID: 1960454137}
   gameOverPanal: {fileID: 1855739527}
@@ -289,8 +290,7 @@ MonoBehaviour:
   - {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
   - {fileID: 765914414334318686, guid: a53a7c0e4aaa4574189745a0a0ba6080, type: 3}
   enemyList: 
-  bestScoreText: {fileID: 0}
-  CurScoreText: {fileID: 0}
+  bestScoreText: {fileID: 30716080}
 --- !u!1 &25438497
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4413165}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameStart
+        m_MethodName: ReStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

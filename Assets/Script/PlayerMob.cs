@@ -5,28 +5,27 @@ using UnityEngine.Rendering;
 
 public class PlayerMob : MonoBehaviour
 {
-    public float speed = 3;
+    //스탯은 다른클래스로 
+     float speed = 10;
     public GameObject[] weapons;
     public GameObject[] grenades;
     public GameObject granadeobj;
     public Camera follwouCamera;
     public bool[] hasWeapons;
     public GameManager gameManager;
+    GetKeyCodeManager keyCodeManager;
+
+  public  int ammo;
+  public  int coin;
+  public  int health;
+   public int hasGreandes;
+
+  public  int maxammo;
+  public  int maxhealth;
+    int maxcoin = int.MaxValue;
+    int maxhasGreandes = 4;
 
 
-    public int ammo;
-    public int coin;
-    public int health;
-    public int hasGreandes;
-    public int score;
-
-    public int maxammo;
-    public int maxcoin;
-    public int maxhealth;
-    public int maxhasGreandes;
-
-    float axisHorx;
-    float axisVerz;
     float fireDelay;
 
     bool isShop;
@@ -36,20 +35,8 @@ public class PlayerMob : MonoBehaviour
     bool isFireReady = true;
     bool isBorder;
     bool isDamege = false;
-
-    bool walkDown;
-    bool JumpDown;
-    bool iDown;
-    bool sDown1;
-    bool sDown2;
-    bool sDown3;
-    bool fDown;
-    bool gDown;
-    bool rDown;
-
     bool isDead;
     bool isReload;
-
 
     Vector3 moveVec;
     Vector3 DodgeVec;
@@ -57,29 +44,30 @@ public class PlayerMob : MonoBehaviour
     Rigidbody plrigidbody;
     MeshRenderer[] meshes;
     GameObject nearobjeact;
-  public  Weapon equipWeapon;
+    public Weapon equipWeapon;
     int equipWeaponIndex = -1;
     private void Awake()
     {
+        PlayerGetComponent();
+    }
+    void PlayerGetComponent()
+    {
+        keyCodeManager = GenericSinglngton<GetKeyCodeManager>.Instance;
         plrigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         meshes = GetComponentsInChildren<MeshRenderer>();
-        PlayerPrefs.SetInt("MaxScore",1000);
-    }
-    void Start()
-    {
-        Debug.Log("asd");
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor") {
+        if (collision.gameObject.tag == "Floor")
+        {
             animator.SetBool("isJump", false);
             isJump = false;
-               }
+        }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon"|| other.tag == "Shop")
+        if (other.tag == "Weapon" || other.tag == "Shop")
         {
             nearobjeact = other.gameObject;
         }
@@ -98,46 +86,54 @@ public class PlayerMob : MonoBehaviour
             nearobjeact = null;
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Item")
         {
-            Item item = other.GetComponent<Item>();
-            switch (item.type)
-            {
-                case Item.Type.Ammo:
-                    ammo += item.value;
-                    if (ammo > maxammo) { ammo = maxammo; }
-                    break;
-                case Item.Type.Coin:
-                    coin += item.value;
-                    if (coin > maxcoin) { coin = maxcoin; }
-                    break;
-                case Item.Type.Heart:
-                    health += item.value;
-                    if (health > maxhealth) { health = maxhealth; }
-                    break;
-                case Item.Type.Grenade:
-                    grenades[hasGreandes].SetActive(true);
-                    hasGreandes += item.value;
-                    if (hasGreandes > maxhasGreandes) { hasGreandes = maxhasGreandes; }
-                    break;
-            }
-            Destroy(other.gameObject);
+            PlayerByItem(other);
         }
-      else  if (other.tag == "EnemyBullet" )
+        else if (other.tag == "EnemyBullet")
         {
-            if (isDamege == false)
-            {
-                Debug.Log("EnemyBullet");
-                Bullet enemyBullet = other.GetComponent<Bullet>();
-                health -= enemyBullet.damage;
-                bool isBossAtk = other.name == "Boss Melee Alea";
-                StartCoroutine(OnDamege(isBossAtk));
-            }
-            if(other.GetComponent<Rigidbody>() != null) { Destroy(other.gameObject); }
+            DamegeStart(other);
         }
+    }
+    void PlayerByItem(Collider other)
+    {
+        Item item = other.GetComponent<Item>();
+        switch (item.type)
+        {
+            case Item.Type.Ammo:
+                ammo += item.value;
+                if (ammo > maxammo) { ammo = maxammo; }
+                break;
+            case Item.Type.Coin:
+                coin += item.value;
+                if (coin > maxcoin) { coin = maxcoin; }
+                break;
+            case Item.Type.Heart:
+                health += item.value;
+                if (health > maxhealth) { health = maxhealth; }
+                break;
+            case Item.Type.Grenade:
+                grenades[hasGreandes].SetActive(true);
+                hasGreandes += item.value;
+                if (hasGreandes > maxhasGreandes) { hasGreandes = maxhasGreandes; }
+                break;
+        }
+        Destroy(other.gameObject);
+    }
+    void DamegeStart(Collider other)
+    {
+        if (isDamege == false)
+        {
+            Debug.Log("EnemyBullet");
+            Bullet enemyBullet = other.GetComponent<Bullet>();
+            health -= enemyBullet.damage;
+            bool isBossAtk = other.name == "Boss Melee Alea";
+            StartCoroutine(OnDamege(isBossAtk));
+        }
+        if (other.GetComponent<Rigidbody>() != null) { Destroy(other.gameObject); }
     }
     IEnumerator OnDamege(bool isBossAtk)
     {
@@ -146,7 +142,7 @@ public class PlayerMob : MonoBehaviour
             OnDie();
         }
         isDamege = true;
-        foreach(MeshRenderer mesh in meshes)
+        foreach (MeshRenderer mesh in meshes)
         {
             mesh.material.color = Color.red;
         }
@@ -164,7 +160,7 @@ public class PlayerMob : MonoBehaviour
         {
             plrigidbody.velocity = Vector3.zero;
         }
-    
+
     }
 
     void OnDie()
@@ -190,25 +186,23 @@ public class PlayerMob : MonoBehaviour
     }
     void Update()
     {
-        if(!isDead)
+        if (!isDead)
         {
             Dodge();
             Jump();
-            GetInput();
-            Anime();
+            MoveAnime();
             Attack();
             Reload();
             Swap();
             Interation();
             Granade();
         }
-      //  OnDie();
     }
     void Granade()
     {
         if (hasGreandes == 0)
         { return; }
-        if (gDown && !isReload && !isSwap)
+        if (keyCodeManager._gDown && !isReload && !isSwap)
         {
             Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -226,35 +220,23 @@ public class PlayerMob : MonoBehaviour
             }
         }
     }
-    void GetInput()
-    {
-        axisHorx = Input.GetAxisRaw("Horizontal");
-        axisVerz = Input.GetAxisRaw("Vertical");
-        walkDown = Input.GetButton("Walk");
-        JumpDown = Input.GetButtonDown("Jump");
-        fDown = Input.GetButton("Fire1");
-        gDown = Input.GetButtonDown("Fire2");
-        rDown = Input.GetButtonDown("Reload");
-        iDown = Input.GetButtonDown("Interation");
-        sDown1 = Input.GetButtonDown("sDown1");
-        sDown2 = Input.GetButtonDown("sDown2");
-        sDown3 = Input.GetButtonDown("sDown3");
-    }
+  
     void Reload()
     {
         if (equipWeapon == null) { return; }
         if (equipWeapon.type == Weapon.Type.Melee) { return; }
         if (ammo <= 0) { return; }
 
-        if (rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
+        if (keyCodeManager._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
         {
             animator.SetTrigger("doReload");
             isReload = true;
-            Invoke("ReloadOut", 1f);
+            StartCoroutine(ReloadOut());
         }
     }
-    void ReloadOut()
+    IEnumerator ReloadOut()
     {
+        yield return new WaitForSeconds(1f);
         int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
         equipWeapon.curAmmo = equipWeapon.maxAmmo;
         ammo -= reAmmo;
@@ -262,7 +244,7 @@ public class PlayerMob : MonoBehaviour
     }
     void Turn()
     {
-        if (fDown)
+        if (keyCodeManager._fDown)
         {
             Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -281,7 +263,7 @@ public class PlayerMob : MonoBehaviour
         if (equipWeapon == null) return;
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
-        if (fDown && isFireReady && isDodge == false && isSwap == false&&!isShop)
+        if (keyCodeManager._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
         {
             equipWeapon.Use();
             animator.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
@@ -290,21 +272,21 @@ public class PlayerMob : MonoBehaviour
     }
     void PlayerMove()
     {
-        moveVec = new Vector3(axisHorx, 0, axisVerz).normalized;
+        moveVec = new Vector3(keyCodeManager._axisHorx, 0, keyCodeManager._axisVerz).normalized;
         if (isDodge == true) { moveVec = DodgeVec; }
         if (isSwap == true || isReload || isFireReady == false) { moveVec = Vector3.zero; }
         if (isBorder == false) { transform.position += moveVec * speed * Time.deltaTime; }
 
         Turn();
     }
-    void Anime()
+    void MoveAnime()
     {
         animator.SetBool("isRun", moveVec != Vector3.zero);
-        animator.SetBool("isWalk", walkDown);
+        animator.SetBool("isWalk", keyCodeManager._walkDown);
     }
     void Jump()
     {
-        if (JumpDown && moveVec == Vector3.zero && isJump == false && !isSwap)
+        if (keyCodeManager._JumpDown && moveVec == Vector3.zero && isJump == false && !isSwap)
         {
             plrigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
             animator.SetBool("isJump", true);
@@ -314,7 +296,7 @@ public class PlayerMob : MonoBehaviour
     }
     void Dodge()
     {
-        if (JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap)
+        if (keyCodeManager._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap)
         {
             DodgeVec = moveVec;
             speed *= 2;
@@ -330,16 +312,16 @@ public class PlayerMob : MonoBehaviour
     }
     void Swap()
     {
-        if (sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
-        if (sDown2 && (hasWeapons[1] == false || equipWeaponIndex == 1)) { return; }
-        if (sDown3 && (hasWeapons[2] == false || equipWeaponIndex == 2)) { return; }
+        if (keyCodeManager._sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
+        if (keyCodeManager._sDown2 && (hasWeapons[1] == false || equipWeaponIndex == 1)) { return; }
+        if (keyCodeManager._sDown3 && (hasWeapons[2] == false || equipWeaponIndex == 2)) { return; }
 
         int weaponIndex = -1;
-        if (sDown1) { weaponIndex = 0; }
-        if (sDown2) { weaponIndex = 1; }
-        if (sDown3) { weaponIndex = 2; }
+        if (keyCodeManager._sDown1) { weaponIndex = 0; }
+        if (keyCodeManager._sDown2) { weaponIndex = 1; }
+        if (keyCodeManager._sDown3) { weaponIndex = 2; }
 
-        if ((sDown1 || sDown2 || sDown3) && isJump == false && isDodge == false)//
+        if ((keyCodeManager._sDown1 || keyCodeManager._sDown2 || keyCodeManager._sDown3) && isJump == false && isDodge == false)//
         {
             if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
             equipWeaponIndex = weaponIndex;
@@ -357,7 +339,7 @@ public class PlayerMob : MonoBehaviour
     }
     void Interation()
     {
-        if (iDown == true && nearobjeact != null && isJump == false && isDodge == false)
+        if (keyCodeManager._iDown == true && nearobjeact != null && isJump == false && isDodge == false)
         {
             if (nearobjeact.tag == "Weapon")
             {

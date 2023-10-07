@@ -177,7 +177,7 @@ public class Enemy : MonoBehaviour
             agent.enabled = false;
             animator.SetTrigger("Die");
             PlayerMob player = target.GetComponent<PlayerMob>();
-            player.score += score;
+          manager  .score += score;
             int ranCoin = Random.Range(0, 3);
             Instantiate(coins[ranCoin],transform.position,Quaternion.identity);
 

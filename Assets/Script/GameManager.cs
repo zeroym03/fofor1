@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int enemyCntB;
     public int enemyCntC;
     public int enemyCntD;
+    public int score;
 
     public GameObject menuPanal;
     public GameObject gamePanal;
@@ -54,7 +55,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies;
     public List<int> enemyList;
     public Text bestScoreText;
-    public Text CurScoreText;
     private void Awake()
     {
         enemyList = new List<int>();
@@ -77,10 +77,10 @@ public class GameManager : MonoBehaviour
         gamePanal.SetActive(false);
         gameOverPanal.SetActive(true);
         int maxScore = PlayerPrefs.GetInt("MaxScore");
-        if(player.score > maxScore)
+        if(score > maxScore)
         {
             bestScoreText.gameObject.SetActive(true);
-            PlayerPrefs.SetInt("MaxScore", player.score);
+            PlayerPrefs.SetInt("MaxScore", score);
         }
     }
     public void ReStart()
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        ScoreText.text = string.Format("{0:n0}", player.score);
+        ScoreText.text = string.Format("{0:n0}", score);
         stageText.text = "Stage" + stage;
 
         int hour = (int)(PlayTime / 3600);
