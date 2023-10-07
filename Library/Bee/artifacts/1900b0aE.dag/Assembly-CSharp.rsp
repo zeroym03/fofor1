@@ -361,7 +361,7 @@
 "Assets/Script/Missile.cs"
 "Assets/Script/Orbit.cs"
 "Assets/Script/PlayerMob.cs"
-"Assets/Script/PlayerMobMove.cs"
+"Assets/Script/PlayerMobAction.cs"
 "Assets/Script/Shop/Shop.cs"
 "Assets/Script/StartZone.cs"
 "Assets/Script/Weapon.cs"

@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies;
     public List<int> enemyList;
     public Text bestScoreText;
+    public Text CurScoreText;
     private void Awake()
     {
         enemyList = new List<int>();
@@ -77,7 +78,9 @@ public class GameManager : MonoBehaviour
         gamePanal.SetActive(false);
         gameOverPanal.SetActive(true);
         int maxScore = PlayerPrefs.GetInt("MaxScore");
-        if(score > maxScore)
+        bestScoreText.text = string.Format("{0:n0}", maxScore);
+
+        if (score > maxScore)
         {
             bestScoreText.gameObject.SetActive(true);
             PlayerPrefs.SetInt("MaxScore", score);

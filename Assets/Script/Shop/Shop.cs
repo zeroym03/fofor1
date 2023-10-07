@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public RectTransform UIGroup;
-    public Animator Animator;
     PlayerMob enterPlayer;
 
-    public Text talkText;
 
+    public RectTransform UIGroup;
+    public Animator Animator;
+    public Text talkText;
     public int[] itemPrice;
-  public  Transform[] itemPos;
+    public Transform[] itemPos;
     public GameObject[] itemObj;
     public string[] TalkData;
     public void Enter(PlayerMob playerMob)
@@ -28,14 +28,14 @@ public class Shop : MonoBehaviour
     public void Buy(int index)
     {
         int price = itemPrice[index];
-        if(price > enterPlayer.coin)
+        if (price > enterPlayer.coin)
         {
             StopCoroutine(Talk());
             StartCoroutine(Talk());
             return;
         }
         enterPlayer.coin -= price;
-        Vector3 renVec = Vector3.right * Random.Range(-3, 3)+Vector3.forward * Random.Range(-3,3);
+        Vector3 renVec = Vector3.right * Random.Range(-3, 3) + Vector3.forward * Random.Range(-3, 3);
         Instantiate(itemObj[index], itemPos[index].position + renVec, itemPos[index].rotation);
     }
     IEnumerator Talk()

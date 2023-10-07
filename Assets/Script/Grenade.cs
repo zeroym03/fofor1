@@ -18,7 +18,8 @@ public class Grenade : MonoBehaviour
         rigid.angularVelocity = Vector3.zero;
         mesobj.SetActive(false);
         effectobj.SetActive(true);
-
+        rigid.useGravity = false;
+        gameObject.layer = 14;
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, 
             15, Vector3.up, 0f,
             LayerMask.GetMask("enemy")); ;

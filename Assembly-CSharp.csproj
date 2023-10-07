@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Grenade.cs" />
     <Compile Include="Assets\Script\Orbit.cs" />
+    <Compile Include="Assets\Script\PlayerMobAction.cs" />
+    <Compile Include="Assets\Script\GetKeyCodeManager.cs" />
     <Compile Include="Assets\Script\camera.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\Boss\BossRock.cs" />
@@ -73,8 +75,6 @@
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\GetKeyCodeManager.cs" />
-    <Compile Include="Assets\Script\PlayerMobMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

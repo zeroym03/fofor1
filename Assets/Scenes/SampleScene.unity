@@ -249,7 +249,7 @@ MonoBehaviour:
   gameCam: {fileID: 963194225}
   player: {fileID: 5903297866307448166}
   boss: {fileID: 0}
-  stage: 5
+  stage: 11
   PlayTime: 0
   isBattel: 0
   enemyCntA: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   - {fileID: 765914414334318686, guid: a53a7c0e4aaa4574189745a0a0ba6080, type: 3}
   enemyList: 
   bestScoreText: {fileID: 30716080}
+  CurScoreText: {fileID: 30716080}
 --- !u!1 &25438497
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 25438498}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +338,7 @@ GameObject:
   - component: {fileID: 30716081}
   - component: {fileID: 30716080}
   m_Layer: 5
-  m_Name: Score Text
+  m_Name: LastScore Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +552,7 @@ GameObject:
   - component: {fileID: 67155554}
   - component: {fileID: 67155553}
   m_Layer: 5
-  m_Name: 'Score Text '
+  m_Name: 'To Score Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +632,7 @@ GameObject:
   - component: {fileID: 76079277}
   - component: {fileID: 76079276}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: HPPriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711,7 +712,7 @@ GameObject:
   - component: {fileID: 78718514}
   - component: {fileID: 78718513}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,7 +966,7 @@ GameObject:
   - component: {fileID: 132253987}
   - component: {fileID: 132253986}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SubMachinGun Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6149,7 +6150,7 @@ MonoBehaviour:
   UIGroup: {fileID: 420330644}
   Animator: {fileID: 1025905078}
   talkText: {fileID: 1563894256}
-  itemPrice: 640000006400000064000000
+  itemPrice: 64000000c8000000e8030000
   itemPos:
   - {fileID: 1874091769}
   - {fileID: 1339665156}
@@ -11379,7 +11380,7 @@ GameObject:
   - component: {fileID: 459402500}
   - component: {fileID: 459402499}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Hammer Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11459,7 +11460,7 @@ GameObject:
   - component: {fileID: 461993650}
   - component: {fileID: 461993649}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Grenade Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11535,7 +11536,7 @@ GameObject:
   - component: {fileID: 463961141}
   - component: {fileID: 463961140}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HPImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11611,7 +11612,7 @@ GameObject:
   - component: {fileID: 468647037}
   - component: {fileID: 468647036}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: SubMachinGun Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11691,7 +11692,7 @@ GameObject:
   - component: {fileID: 480197249}
   - component: {fileID: 480197248}
   m_Layer: 5
-  m_Name: AmmoText
+  m_Name: To AmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11771,7 +11772,7 @@ GameObject:
   - component: {fileID: 491087841}
   - component: {fileID: 491087840}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: HandGun Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12100,7 +12101,7 @@ GameObject:
   - component: {fileID: 537244761}
   - component: {fileID: 537244764}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Wall 1
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12790,7 +12791,7 @@ GameObject:
   - component: {fileID: 656921489}
   - component: {fileID: 656921488}
   m_Layer: 5
-  m_Name: AmmoImage
+  m_Name: To AmmoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12897,7 +12898,7 @@ GameObject:
   - component: {fileID: 681654456}
   - component: {fileID: 681654455}
   m_Layer: 5
-  m_Name: 'Stage Text '
+  m_Name: 'To Stage Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12977,7 +12978,7 @@ GameObject:
   - component: {fileID: 698597676}
   - component: {fileID: 698597675}
   m_Layer: 5
-  m_Name: HPImage
+  m_Name: To HPImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13053,7 +13054,7 @@ GameObject:
   - component: {fileID: 699401357}
   - component: {fileID: 699401356}
   m_Layer: 5
-  m_Name: HPText
+  m_Name: To HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13325,7 +13326,7 @@ GameObject:
   - component: {fileID: 708304252}
   - component: {fileID: 708304251}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Luna Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13401,7 +13402,7 @@ GameObject:
   - component: {fileID: 728166084}
   - component: {fileID: 728166083}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Ludo word
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13779,7 +13780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810446563}
   m_Layer: 0
-  m_Name: GameO
+  m_Name: GameOB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13813,7 +13814,7 @@ GameObject:
   - component: {fileID: 815983278}
   - component: {fileID: 815983277}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14081,7 +14082,7 @@ GameObject:
   - component: {fileID: 885906249}
   - component: {fileID: 885906248}
   m_Layer: 5
-  m_Name: Score Image
+  m_Name: To Score Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14478,7 +14479,7 @@ GameObject:
   - component: {fileID: 967036583}
   - component: {fileID: 967036582}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coin Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14793,7 +14794,7 @@ GameObject:
   - component: {fileID: 982630084}
   - component: {fileID: 982630083}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coin Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20402,7 +20403,7 @@ GameObject:
   - component: {fileID: 1114179850}
   - component: {fileID: 1114179853}
   m_Layer: 10
-  m_Name: Cube (3)
+  m_Name: Cube 4
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30728,134 +30729,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232891965}
   m_CullTransparentMesh: 1
---- !u!1 &1237458673
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1237458674}
-  - component: {fileID: 1237458675}
-  m_Layer: 7
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1237458674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237458673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5903297866307448165}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1237458675
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237458673}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1267637799
 GameObject:
   m_ObjectHideFlags: 0
@@ -30868,7 +30741,7 @@ GameObject:
   - component: {fileID: 1267637802}
   - component: {fileID: 1267637801}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coin Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31097,7 +30970,7 @@ GameObject:
   - component: {fileID: 1295915703}
   - component: {fileID: 1295915702}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: SubMachinGun Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31177,7 +31050,7 @@ GameObject:
   - component: {fileID: 1326048073}
   - component: {fileID: 1326048072}
   m_Layer: 5
-  m_Name: CoinImage
+  m_Name: To CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31364,7 +31237,7 @@ GameObject:
   - component: {fileID: 1339969705}
   - component: {fileID: 1339969704}
   m_Layer: 5
-  m_Name: 'Time Text '
+  m_Name: 'Game Time Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31620,7 +31493,7 @@ GameObject:
   - component: {fileID: 1391778715}
   - component: {fileID: 1391778714}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Hammer Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31700,7 +31573,7 @@ GameObject:
   - component: {fileID: 1397789919}
   - component: {fileID: 1397789918}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Ammo Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31913,7 +31786,7 @@ GameObject:
   - component: {fileID: 1421789731}
   - component: {fileID: 1421789730}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Ludo Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31989,7 +31862,7 @@ GameObject:
   - component: {fileID: 1453307430}
   - component: {fileID: 1453307429}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Ammo Price Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32048,7 +31921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 200
 --- !u!222 &1453307430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32181,7 +32054,7 @@ GameObject:
   - component: {fileID: 1474175376}
   - component: {fileID: 1474175379}
   m_Layer: 10
-  m_Name: Cube (1)
+  m_Name: Wall 2
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32521,7 +32394,7 @@ GameObject:
   - component: {fileID: 1563894257}
   - component: {fileID: 1563894256}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Luna word
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32928,7 +32801,7 @@ GameObject:
   - component: {fileID: 1650962551}
   - component: {fileID: 1650962550}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Control R Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33004,7 +32877,7 @@ GameObject:
   - component: {fileID: 1670981892}
   - component: {fileID: 1670981891}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hammer Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33080,7 +32953,7 @@ GameObject:
   - component: {fileID: 1671938847}
   - component: {fileID: 1671938846}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Control L Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33195,7 +33068,7 @@ GameObject:
   - component: {fileID: 1686068261}
   - component: {fileID: 1686068264}
   m_Layer: 10
-  m_Name: Cube (2)
+  m_Name: Wall 3
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33715,7 +33588,7 @@ GameObject:
   - component: {fileID: 1787733974}
   - component: {fileID: 1787733973}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Ammo Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33795,7 +33668,7 @@ GameObject:
   - component: {fileID: 1796026847}
   - component: {fileID: 1796026846}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: GameOver Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33875,7 +33748,7 @@ GameObject:
   - component: {fileID: 1805507322}
   - component: {fileID: 1805507321}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Grenade Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34158,7 +34031,7 @@ GameObject:
   - component: {fileID: 1850481325}
   - component: {fileID: 1850481324}
   m_Layer: 5
-  m_Name: CoinText
+  m_Name: To CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39242,7 +39115,7 @@ GameObject:
   - component: {fileID: 1897489312}
   - component: {fileID: 1897489311}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Control L ImageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39318,7 +39191,7 @@ GameObject:
   - component: {fileID: 1898206499}
   - component: {fileID: 1898206498}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coin Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39392,7 +39265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1919986562}
   m_Layer: 10
-  m_Name: wall
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39466,7 +39339,7 @@ GameObject:
   - component: {fileID: 1943660062}
   - component: {fileID: 1943660061}
   m_Layer: 5
-  m_Name: BossHP
+  m_Name: BossToHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44849,7 +44722,7 @@ GameObject:
   - component: {fileID: 2018555959}
   - component: {fileID: 2018555958}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45027,7 +44900,7 @@ GameObject:
   - component: {fileID: 2035675509}
   - component: {fileID: 2035675508}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Control 1 ImageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45474,7 +45347,7 @@ GameObject:
   - component: {fileID: 2129842151}
   - component: {fileID: 2129842150}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HandGun Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45550,7 +45423,7 @@ GameObject:
   - component: {fileID: 2144668772}
   - component: {fileID: 2144668771}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Grenade Price Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45609,7 +45482,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 1000
 --- !u!222 &2144668772
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45684,14 +45557,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3233685432044566720, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3233685432044566720, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 3946683195260359543, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -45735,18 +45600,6 @@ PrefabInstance:
     - target: {fileID: 3946683195260359543, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7433707222993140004, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7433707222993140009, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
-      propertyPath: coin
-      value: 1000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7433707222993140009, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
-      propertyPath: health
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7433707222993140009, guid: e6b9ac0c1185d1f45b395e7f77f3234a, type: 3}
       propertyPath: gameManager

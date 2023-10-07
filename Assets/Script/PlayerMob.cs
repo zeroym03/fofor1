@@ -36,7 +36,7 @@ public class PlayerMob : MonoBehaviour
     bool isBorder;
     bool isDamege = false;
     bool isDead;
-    bool isReload;
+    bool isReload = false;
 
     Vector3 moveVec;
     Vector3 DodgeVec;
@@ -96,6 +96,26 @@ public class PlayerMob : MonoBehaviour
         else if (other.tag == "EnemyBullet")
         {
             DamegeStart(other);
+        }
+    }
+    private void FixedUpdate()
+    {
+        PlayerMove();
+        FreezeRotatoin();
+        StopToWall();
+    }
+    void Update()
+    {
+        if (!isDead)
+        {
+            Dodge();
+            Jump();
+            MoveAnime();
+            Attack();
+            Reload();
+            Swap();
+            Interation();
+            Granade();
         }
     }
     void PlayerByItem(Collider other)
@@ -178,26 +198,7 @@ public class PlayerMob : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
         isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
     }
-    private void FixedUpdate()
-    {
-        PlayerMove();
-        FreezeRotatoin();
-        StopToWall();
-    }
-    void Update()
-    {
-        if (!isDead)
-        {
-            Dodge();
-            Jump();
-            MoveAnime();
-            Attack();
-            Reload();
-            Swap();
-            Interation();
-            Granade();
-        }
-    }
+
     void Granade()
     {
         if (hasGreandes == 0)
@@ -220,47 +221,38 @@ public class PlayerMob : MonoBehaviour
             }
         }
     }
-  
+
     void Reload()
     {
         if (equipWeapon == null) { return; }
         if (equipWeapon.type == Weapon.Type.Melee) { return; }
         if (ammo <= 0) { return; }
-
-        if (keyCodeManager._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
+        if (isReload) {return; }
+        if (equipWeapon.curAmmo == equipWeapon.maxAmmo) { return; }
+        if (keyCodeManager._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false )
         {
-            animator.SetTrigger("doReload");
-            isReload = true;
             StartCoroutine(ReloadOut());
         }
     }
-    IEnumerator ReloadOut()
+    IEnumerator ReloadOut()//리로딩 실질시스템
     {
+        animator.SetTrigger("doReload");
+        isReload = true;
         yield return new WaitForSeconds(1f);
         int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
-        equipWeapon.curAmmo = equipWeapon.maxAmmo;
+
+        equipWeapon.curAmmo += reAmmo;
+        if (equipWeapon.curAmmo >equipWeapon.maxAmmo) { ammo += equipWeapon.curAmmo - equipWeapon.maxAmmo;
+            equipWeapon.curAmmo = equipWeapon.maxAmmo;}
         ammo -= reAmmo;
         isReload = false;
     }
-    void Turn()
-    {
-        if (keyCodeManager._fDown)
-        {
-            Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                Vector3 nex = hit.point - transform.position;
-                nex.y = 0;
-                transform.LookAt(transform.position + nex);
-            }
-        }
-        transform.LookAt(transform.position + moveVec);
-
-    }
+ 
     void Attack()
     {
+
         if (equipWeapon == null) return;
+        Turn();
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
         if (keyCodeManager._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
@@ -278,6 +270,22 @@ public class PlayerMob : MonoBehaviour
         if (isBorder == false) { transform.position += moveVec * speed * Time.deltaTime; }
 
         Turn();
+    }
+    void Turn()
+    {
+        if (keyCodeManager._fDown)
+        {
+            Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Vector3 nex = hit.point - transform.position;
+                nex.y = 0;
+                transform.LookAt(transform.position + nex);
+            }
+        }
+        transform.LookAt(transform.position + moveVec);
+
     }
     void MoveAnime()
     {
@@ -360,3 +368,4 @@ public class PlayerMob : MonoBehaviour
         }
     }
 }
+

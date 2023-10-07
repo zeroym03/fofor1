@@ -140,6 +140,7 @@ public class Enemy : MonoBehaviour
             Weapon weapon = other.GetComponent<Weapon>();
             CurHP -= weapon.Damege;
             Vector3 reactVec = transform.position - other.transform.position;
+            StartCoroutine(CHColor());
             StartCoroutine(OnDamege(reactVec, false));
         }
         else if (other.tag == "Bullet")
@@ -147,8 +148,8 @@ public class Enemy : MonoBehaviour
             Bullet weapon = other.GetComponent<Bullet>();
             CurHP -= weapon.damage;
             Vector3 reactVec = transform.position - other.transform.position;
-          Destroy(other.gameObject);
-
+            Destroy(other.gameObject);
+            StartCoroutine(CHColor());
             StartCoroutine(OnDamege(reactVec, false));
         }
 
@@ -157,29 +158,23 @@ public class Enemy : MonoBehaviour
     {
         CurHP -= 100;
         Vector3 reactVec = transform.position - explosionPos;
+        StartCoroutine(CHColor());
         StartCoroutine(OnDamege(reactVec, true));
     }
+
     IEnumerator OnDamege(Vector3 reactVec, bool isgranade)
     {
-        foreach (MeshRenderer Mat in meshs)
-            Mat.material.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        if (CurHP > 0)
-            foreach (MeshRenderer Mat in meshs)
-                Mat.material.color = Color.white;
-        else
+        if (isDead == false&& CurHP <=0)
         {
-            foreach (MeshRenderer Mat in meshs)
-                Mat.material.color = Color.black;
             gameObject.layer = 14;
             isDead = true;
             isChase = false;
             agent.enabled = false;
             animator.SetTrigger("Die");
             PlayerMob player = target.GetComponent<PlayerMob>();
-          manager  .score += score;
+            manager.score += score;
             int ranCoin = Random.Range(0, 3);
-            Instantiate(coins[ranCoin],transform.position,Quaternion.identity);
+            Instantiate(coins[ranCoin], transform.position, Quaternion.identity);
 
             switch (type)
             {
@@ -214,7 +209,28 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 Destroy(gameObject);
             }
-
         }
+      
+    }
+    IEnumerator CHColor()
+    {
+        if (CurHP >= 0)
+            foreach (MeshRenderer Mat in meshs)
+            {
+                Mat.material.color = Color.red;
+                yield return new WaitForSeconds(0.2f);
+                Mat.material.color = Color.white;
+
+            }
+        else
+        {
+            foreach (MeshRenderer Mat in meshs)
+                Mat.material.color = Color.black;
+        }
+        
     }
 }
+
+
+
+
