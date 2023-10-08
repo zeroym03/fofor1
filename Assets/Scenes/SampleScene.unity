@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,7 +249,7 @@ MonoBehaviour:
   gameCam: {fileID: 963194225}
   player: {fileID: 5903297866307448166}
   boss: {fileID: 0}
-  stage: 11
+  stage: 1
   PlayTime: 0
   isBattel: 0
   enemyCntA: 0
