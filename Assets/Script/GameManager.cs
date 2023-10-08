@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public Text CurScoreText;
     private void Awake()
     {
-        GenericSinglngton<PlayerManager>.Instance.AddPlayer("Player", PlayerType.Hero,"Player");
+      
         enemyList = new List<int>();
         maxScore.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
         if (PlayerPrefs.HasKey("MaxScore"))
@@ -73,7 +73,8 @@ public class GameManager : MonoBehaviour
         gameCam.SetActive(true);
         menuPanal.SetActive(false);
         gamePanal.SetActive(true);
-       // player.gameObject.SetActive(true);
+        GenericSinglngton<PlayerManager>.Instance.AddPlayer("Player", PlayerType.Hero, "Player");
+        // player.gameObject.SetActive(true);
     }
     public void GameOver()
     {

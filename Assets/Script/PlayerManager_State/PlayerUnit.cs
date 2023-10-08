@@ -9,7 +9,7 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
     [SerializeField] GameObject[] weapons;
     [SerializeField] GameObject[] grenades;
     [SerializeField] GameObject granadeobj;
-    [SerializeField] Camera follwouCamera;
+    public Camera follwouCamera;
     public bool[] hasWeapons;
    GameManager gameManager;
     GetKeyCodeManager keyCodeManager;
@@ -296,7 +296,6 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
             }
         }
         transform.LookAt(transform.position + moveVec);
-
     }
     void MoveAnime()
     {
