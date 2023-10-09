@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUnit : PlayerBase  //상속 오버라이드
+public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 {
     //스탯은 다른클래스로 
     float speed = 10;
@@ -20,7 +20,7 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
     public int hasGreandes;
 
     public int maxammo;
-    public int maxhealth;
+    public int maxhealth = 300;
     int maxcoin = int.MaxValue;
     int maxhasGreandes = 4;
 
@@ -39,54 +39,43 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
 
     Vector3 moveVec;
     Vector3 DodgeVec;
-    Animator animator;
+    PlayerAni playerAni;
     Rigidbody plrigidbody;
     MeshRenderer[] meshes;
     GameObject nearobjeact;
     public Weapon equipWeapon;
     int equipWeaponIndex = -1;
-    public override void UpdatePlayer()
-    {
-        if (!isDead)
-        {
-            Dodge();
-            MoveAnime();
-            Attack();
-            Reload();
-            Swap();
-            Interation();
-            Granade();
-        }
-        Move();
-        Fire();
-    }
 
-    public override void InitPlayer(string uid)
-    {        
-        base.InitPlayer(uid);
-        Type = PlayerType.Hero;
-        print("Hero InitPlayer()");
-    }
- 
     private void Awake()
     {
         PlayerGetComponent();
+        print("Hero InitPlayer()");
     }
+    private void Update()
+    {
+            if (!isDead)
+            {
+                PlayerMove();
+                FreezeRotatoin();
+                StopToWall();
+                Dodge();
+                playerAni.MoveAnime(moveVec);
+                Attack();
+                Reload();
+                Swap();
+                Interation();
+                Granade();
+            }
+    }
+   
     void PlayerGetComponent()
     {
+        playerAni = GetComponent<PlayerAni>();
         keyCodeManager = GenericSinglngton<GetKeyCodeManager>.Instance;
         plrigidbody = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
         meshes = GetComponentsInChildren<MeshRenderer>();
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Floor")
-        {
-            animator.SetBool("isJump", false);
-            isJump = false;
-        }
-    }
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
@@ -122,9 +111,7 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
     }
     private void FixedUpdate()
     {
-        PlayerMove();
-        FreezeRotatoin();
-        StopToWall();
+      
     }
     void PlayerByItem(Collider other)
     {
@@ -190,11 +177,10 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
         }
 
     }
-
     void OnDie()
     {
-        animator.SetTrigger("doDie");
-        isDead = true;
+        playerAni.DoDie();
+       isDead = true;
         gameManager.GameOver();
     }
     void FreezeRotatoin()
@@ -229,7 +215,6 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
             }
         }
     }
-
     void Reload()
     {
         if (equipWeapon == null) { return; }
@@ -244,8 +229,8 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
     }
     IEnumerator ReloadOut()//리로딩 실질시스템
     {
-        animator.SetTrigger("doReload");
-        isReload = true;
+        playerAni.DoReload();
+         isReload = true;
         yield return new WaitForSeconds(1f);
         int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
 
@@ -269,8 +254,8 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
         if (keyCodeManager._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
         {
             equipWeapon.Use();
-            animator.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
-            fireDelay = 0;
+            playerAni.WeaponTypeAttack(equipWeapon);
+                fireDelay = 0;
         }
     }
     void PlayerMove()
@@ -297,19 +282,15 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
         }
         transform.LookAt(transform.position + moveVec);
     }
-    void MoveAnime()
-    {
-        animator.SetBool("isRun", moveVec != Vector3.zero);
-        animator.SetBool("isWalk", keyCodeManager._walkDown);
-    }
+ 
     void Dodge()
     {
         if (keyCodeManager._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap)
         {
             DodgeVec = moveVec;
             speed *= 2;
-            animator.SetTrigger("doDodge");
-            isDodge = true;
+            playerAni.DoDodge();
+             isDodge = true;
             StartCoroutine(DodgeOut());
         }
     }
@@ -337,8 +318,8 @@ public class PlayerUnit : PlayerBase  //상속 오버라이드
             equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
             weapons[weaponIndex].SetActive(true);
 
-            animator.SetTrigger("DoSwap");
-            isSwap = true;
+            playerAni.DoSwap();
+               isSwap = true;
             StartCoroutine(SwapOut());
         }
     }

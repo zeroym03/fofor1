@@ -20306,6 +20306,7 @@ GameObject:
   - component: {fileID: 7433707222993140004}
   - component: {fileID: 7433707222993140005}
   - component: {fileID: 2294552361900438483}
+  - component: {fileID: -1285852627413552915}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -20389,13 +20390,25 @@ MonoBehaviour:
   granadeobj: {fileID: 4478933306261831803, guid: 82dc491c6d1b22749aae4a5f2fa889b6, type: 3}
   follwouCamera: {fileID: 0}
   hasWeapons: 00000000
-  ammo: 0
-  coin: 0
-  health: 0
+  ammo: 100
+  coin: 10000
+  health: 200
   hasGreandes: 0
-  maxammo: 0
-  maxhealth: 0
+  maxammo: 300
+  maxhealth: 300
   equipWeapon: {fileID: 0}
+--- !u!114 &-1285852627413552915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233685432044566720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad270805a67bcd46b9adde6b112c049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3787162317255047072
 PrefabInstance:
   m_ObjectHideFlags: 0
