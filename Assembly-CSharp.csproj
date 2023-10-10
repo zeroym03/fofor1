@@ -56,6 +56,7 @@
     <Analyzer Include="D:\c++\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerUnit.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerEnemy1.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerState.cs" />
@@ -71,8 +72,8 @@
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\Boss\BossRock.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerManagerScene.cs" />
+    <Compile Include="Assets\Script\PlayerManager_State\PlayerAni.cs" />
     <Compile Include="Assets\Script\Boss\BossMob.cs" />
-    <Compile Include="Assets\UiManager.cs" />
     <Compile Include="Assets\Script\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Script\Missile.cs" />
     <Compile Include="Assets\Script\StartZone.cs" />
@@ -84,8 +85,7 @@
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\PlayerManager_State\PlayerAni.cs" />
-    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\GameStartSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

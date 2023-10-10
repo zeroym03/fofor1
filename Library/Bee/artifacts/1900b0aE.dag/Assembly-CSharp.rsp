@@ -353,6 +353,7 @@
 "Assets/Script/Bullet.cs"
 "Assets/Script/Enemy.cs"
 "Assets/Script/GameCamera.cs"
+"Assets/Script/GameStartSystem.cs"
 "Assets/Script/GenericSinglngton.cs"
 "Assets/Script/GetKeyCodeManager.cs"
 "Assets/Script/Grenade.cs"
@@ -375,7 +376,6 @@
 "Assets/Script/Shop/Shop.cs"
 "Assets/Script/StartZone.cs"
 "Assets/Script/Weapon.cs"
-"Assets/UiManager.cs"
 -langversion:9.0
 
 /deterministic

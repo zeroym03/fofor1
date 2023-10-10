@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         GenericSinglngton<UIManager>.Instance.UIGameStart();
-        player = Resources.Load("Player").GameObject();
+       // player = Resources.Load("Player").GameObject();
         playerUnit = player.GetComponent<PlayerUnit>();
     }
     public void GameOver()
