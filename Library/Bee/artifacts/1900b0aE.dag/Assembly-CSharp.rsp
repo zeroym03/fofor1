@@ -375,6 +375,11 @@
 "Assets/Script/PlayerMobAction.cs"
 "Assets/Script/Shop/Shop.cs"
 "Assets/Script/StartZone.cs"
+"Assets/Script/UI/GamePanel.cs"
+"Assets/Script/UI/MenuCamera.cs"
+"Assets/Script/UI/MenuPanel.cs"
+"Assets/Script/UI/MenuScoreText.cs"
+"Assets/Script/UI/UIButtenManager.cs"
 "Assets/Script/Weapon.cs"
 -langversion:9.0
 

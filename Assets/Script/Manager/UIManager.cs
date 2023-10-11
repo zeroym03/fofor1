@@ -36,23 +36,17 @@ public class UIManager : MonoBehaviour
 
     public RectTransform BossHPGroup;
     public RectTransform BossHPBar;
-    GameObject menuCam;
-   GameObject gameCam;
+    public GameObject menuCam { get; set; }
+    public GameObject gameCam { get; set; }
+
     PlayerUnit playerUnit;
     Text bestScoreText;
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey("MaxScore"))
-        {
-            PlayerPrefs.SetInt("MaxScore", 0);
-        }
-    }
+
     public void UIGameStart()
     {
         menuCam.SetActive(false);//UI
         gameCam.SetActive(true);
         gameCamera = gameCam.GetComponent<GameCamera>();
-        gameCamera.target = playerUnit.gameObject.transform;
         menuPanal.SetActive(false);
         gamePanal.SetActive(true);
 
@@ -91,7 +85,6 @@ public class UIManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        //ScoreText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.score);
         //stageText.text = "Stage" + GenericSinglngton<GameManager>.Instance.stage;
 
         //int hour = (int)(PlayTime / 3600);

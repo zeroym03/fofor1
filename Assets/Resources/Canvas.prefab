@@ -2979,13 +2979,14 @@ GameObject:
   - component: {fileID: 4251406467031252874}
   - component: {fileID: 4251406467031252876}
   - component: {fileID: 4251406467031252875}
+  - component: {fileID: 3116073560301737842}
   m_Layer: 5
   m_Name: Game Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4251406467031252874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3052,6 +3053,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3116073560301737842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406467031252873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d28aa2cc1d5ec643bd0d85c64224515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406467032149477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,6 +3114,7 @@ GameObject:
   - component: {fileID: 4251406467033506487}
   - component: {fileID: 4251406467033506489}
   - component: {fileID: 4251406467033506488}
+  - component: {fileID: 8825891760237368460}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -3170,6 +3184,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8825891760237368460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406467033506486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ff0b0f498ab794f9ac240bc6803e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406467066076591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,6 +4386,7 @@ GameObject:
   - component: {fileID: 4251406467304524816}
   - component: {fileID: 4251406467304524818}
   - component: {fileID: 4251406467304524817}
+  - component: {fileID: 3429444846022736546}
   m_Layer: 5
   m_Name: Score Text
   m_TagString: Untagged
@@ -4429,6 +4456,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 111111111
+--- !u!114 &3429444846022736546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406467304524847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903211292ea4414e822acb5ce9355c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406467320889991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7469,6 +7508,7 @@ GameObject:
   - component: {fileID: 4251406468255605066}
   - component: {fileID: 4251406468255605065}
   - component: {fileID: 4251406468255605064}
+  - component: {fileID: 2778840744742065105}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7560,6 +7600,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2778840744742065105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406468255605063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13543104b833c54c93ef4ba702da2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406468313670930
 GameObject:
   m_ObjectHideFlags: 0
@@ -8376,9 +8428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameStart
+      - m_Target: {fileID: 2778840744742065105}
+        m_TargetAssemblyTypeName: UIButtenManager, Assembly-CSharp
+        m_MethodName: GameStartButten
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -58,9 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerUnit.cs" />
+    <Compile Include="Assets\Script\UI\GamePanel.cs" />
+    <Compile Include="Assets\Script\UI\MenuPanel.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerEnemy1.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerState.cs" />
     <Compile Include="Assets\Script\Grenade.cs" />
+    <Compile Include="Assets\Script\UI\MenuScoreText.cs" />
     <Compile Include="Assets\Script\Orbit.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerEnemy2.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\Player.cs" />
@@ -71,10 +74,12 @@
     <Compile Include="Assets\Script\GameCamera.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\Boss\BossRock.cs" />
+    <Compile Include="Assets\Script\GameStartSystem.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerManagerScene.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerAni.cs" />
     <Compile Include="Assets\Script\Boss\BossMob.cs" />
     <Compile Include="Assets\Script\Manager\PlayerManager.cs" />
+    <Compile Include="Assets\Script\UI\UIButtenManager.cs" />
     <Compile Include="Assets\Script\Missile.cs" />
     <Compile Include="Assets\Script\StartZone.cs" />
     <Compile Include="Assets\Script\GenericSinglngton.cs" />
@@ -85,7 +90,7 @@
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\GameStartSystem.cs" />
+    <Compile Include="Assets\Script\UI\MenuCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
