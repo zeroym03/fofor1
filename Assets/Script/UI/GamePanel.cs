@@ -8,9 +8,4 @@ public class GamePanel : MonoBehaviour
     {
         GenericSinglngton<UIManager>.Instance.gamePanal = gameObject;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

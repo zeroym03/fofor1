@@ -8,7 +8,6 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class UIManager : MonoBehaviour
 {
-    public float PlayTime;
 
     GameCamera gameCamera;
 
@@ -19,7 +18,6 @@ public class UIManager : MonoBehaviour
     public Text ScoreText;
 
     public Text stageText;
-    public Text playTimeText;
 
     public Text playHealtText;
     public Text playAmmoText;
@@ -68,13 +66,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    private void Update()
-    {
-        if (GenericSinglngton<GameManager>.Instance.isBattel)//UI
-        {
-            PlayTime += Time.deltaTime;
-        }
-    }
     public void BaseSet()
     {
         maxScore.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
@@ -83,17 +74,12 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("MaxScore", 0);
         }
     }
+    public void TextCH(Text CHText, string instring)
+    {
+        CHText.text = instring;
+    }
     private void LateUpdate()
     {
-        //stageText.text = "Stage" + GenericSinglngton<GameManager>.Instance.stage;
-
-        //int hour = (int)(PlayTime / 3600);
-        //int Min = (int)((PlayTime - hour * 3600) / 60);
-        //int second = (int)PlayTime % 60;
-        //playTimeText.text =
-        //    string.Format("{0:00}", hour) + ":" +
-        //    string.Format("{0:00}", Min) + ":" +
-        //    string.Format("{0:00}", second);
 
         //playHealtText.text = GenericSinglngton<GameManager>.Instance.playerUnit.health + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.maxhealth;
         //playCoinText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.playerUnit.coin);

@@ -2026,6 +2026,7 @@ GameObject:
   - component: {fileID: 4251406466846968023}
   - component: {fileID: 4251406466846968025}
   - component: {fileID: 4251406466846968024}
+  - component: {fileID: 4843529438961812964}
   m_Layer: 5
   m_Name: 'Game Time Text '
   m_TagString: Untagged
@@ -2095,6 +2096,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00:00:00
+--- !u!114 &4843529438961812964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406466846968022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014d76f4bea16254b961eae71ec02f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406466851987816
 GameObject:
   m_ObjectHideFlags: 0
@@ -8237,6 +8250,7 @@ GameObject:
   - component: {fileID: 4251406468442038470}
   - component: {fileID: 4251406468442038472}
   - component: {fileID: 4251406468442038471}
+  - component: {fileID: 3567382722354771396}
   m_Layer: 5
   m_Name: 'To Stage Text '
   m_TagString: Untagged
@@ -8306,6 +8320,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uC2A4\uD14C\uC774\uC9C0 1"
+--- !u!114 &3567382722354771396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406468442038469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713a23aa5fbc67e4b8cf2629aaa77f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406468459015955
 GameObject:
   m_ObjectHideFlags: 0

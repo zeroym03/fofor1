@@ -9,8 +9,4 @@ public class MenuPanel : MonoBehaviour
     {
         GenericSinglngton<UIManager>.Instance.menuPanal = gameObject;
     }
-    void Update()
-    {
-        
-    }
 }

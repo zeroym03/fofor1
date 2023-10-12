@@ -11,23 +11,23 @@ public class GameManager : MonoBehaviour
     public PlayerUnit playerUnit { get; set; }
   public  GameObject player;
     public BossMob boss;
-    public int stage;
+    public int stage { get; set; } = 1;
     public int score = 0;
 
     public bool isBattel;
 
-    public int enemyCntA;
+    public int enemyCntA { get; set; }
     public int enemyCntB;
     public int enemyCntC;
     public int enemyCntD;
 
 
-    public GameObject ItemShop;
+    public GameObject ItemShop { get; set; }
     public GameObject WeaponShop;
     public GameObject StartZon;
 
     public Transform[] enemyZones;
-    public GameObject[] enemies;
+    public GameObject[] enemies = new GameObject[4];
     public List<int> enemyList;
 
     private void Awake()
@@ -41,9 +41,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameStart()
     {
-        player = Resources.Load("Character/Player").GameObject();
+        player = Instantiate(Resources.Load("Character/Player").GameObject());
         playerUnit = player.GetComponent<PlayerUnit>();
-        player = Instantiate(player);
         GenericSinglngton<UIManager>.Instance.gameCam = Resources.Load("Game Camera") as GameObject;
         Instantiate(GenericSinglngton<UIManager>.Instance.gameCam);
         GenericSinglngton<UIManager>.Instance.UIGameStart();
@@ -57,7 +56,6 @@ public class GameManager : MonoBehaviour
         ItemShop.SetActive(false);
         WeaponShop.SetActive(false);
         StartZon.SetActive(false);
-
         foreach (Transform zone in enemyZones)
         {
             zone.gameObject.SetActive(true);
@@ -114,7 +112,13 @@ public class GameManager : MonoBehaviour
         boss = null;
         StageEnd();
     }
-
+  public  void AddEnemy()
+    {
+        enemies[0] = Resources.Load("Character/Enemy A").GameObject();
+        enemies[1] = Resources.Load("Character/Enemy B").GameObject();
+        enemies[2] = Resources.Load("Character/Enemy C").GameObject();
+        enemies[3] = Resources.Load("Character/Enemy D").GameObject();
+    }
     public void StageEnd()// game
     {
         playerUnit.transform.position = Vector3.zero;
