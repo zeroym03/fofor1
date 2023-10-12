@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         player = Resources.Load("Character/Player").GameObject();
         playerUnit = player.GetComponent<PlayerUnit>();
-        Instantiate(player);
+        player = Instantiate(player);
         GenericSinglngton<UIManager>.Instance.gameCam = Resources.Load("Game Camera") as GameObject;
         Instantiate(GenericSinglngton<UIManager>.Instance.gameCam);
         GenericSinglngton<UIManager>.Instance.UIGameStart();

@@ -8,7 +8,8 @@ public class GameCamera : MonoBehaviour
      Vector3 offest;
     private void Awake()
     {
-        target = GameObject.FindObjectOfType<PlayerUnit>().transform;
+        target = GenericSinglngton<GameManager>.Instance.player.transform;
+      //  target = GameObject.FindObjectOfType<PlayerUnit>().transform;
         offest =    new Vector3(0,30,-18);
     }
     void Update()
