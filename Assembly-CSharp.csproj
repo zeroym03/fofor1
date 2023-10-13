@@ -80,12 +80,14 @@
     <Compile Include="Assets\Script\PlayerManager_State\PlayerManagerScene.cs" />
     <Compile Include="Assets\Script\Player\PlayerAni.cs" />
     <Compile Include="Assets\Script\UI\Cancas\StageText.cs" />
+    <Compile Include="Assets\Script\UI\Cancas\CurrentScoreText.cs" />
     <Compile Include="Assets\Script\UI\IsBattelTime.cs" />
     <Compile Include="Assets\Script\Boss\BossMob.cs" />
     <Compile Include="Assets\Script\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Script\UI\UIButtenManager.cs" />
     <Compile Include="Assets\Script\System\Missile.cs" />
     <Compile Include="Assets\Script\UI\StartZone.cs" />
+    <Compile Include="Assets\Script\UI\Cancas\TestCanvas.cs" />
     <Compile Include="Assets\Script\GenericSinglngton.cs" />
     <Compile Include="Assets\Script\Player\Item.cs" />
     <Compile Include="Assets\QuarterView 3D Action BE5\ReadMe\Scripts\ReadmeBE5.cs" />
@@ -94,8 +96,6 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\UI\Cancas\CurrentScoreText.cs" />
-    <Compile Include="Assets\Script\UI\Cancas\TestCanvas.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

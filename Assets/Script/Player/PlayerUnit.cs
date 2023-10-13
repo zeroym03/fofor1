@@ -9,9 +9,9 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     [SerializeField] GameObject[] weapons;
     [SerializeField] GameObject[] grenades;
     [SerializeField] GameObject granadeobj;
-     Camera follwouCamera;
+    Camera follwouCamera;
     public bool[] hasWeapons;
-   GameManager gameManager;
+    GameManager gameManager;
     GetKeyCodeManager keyCodeManager;
 
     public int ammo;
@@ -54,21 +54,21 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     private void Update()
     {
-            if (!isDead)
-            {
-                PlayerMove();
-                FreezeRotatoin();
-                StopToWall();
-                Dodge();
-                playerAni.MoveAnime(moveVec);
-                Attack();
-                Reload();
-                Swap();
-                Interation();
-                Granade();
-            }
+        if (!isDead)
+        {
+            PlayerMove();
+            FreezeRotatoin();
+            StopToWall();
+            Dodge();
+            playerAni.MoveAnime(moveVec);
+            Attack();
+            Reload();
+            Swap();
+            Interation();
+            Granade();
+        }
     }
-   
+
     void PlayerGetComponent()
     {
         follwouCamera = GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<Camera>();
@@ -77,7 +77,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         plrigidbody = GetComponent<Rigidbody>();
         meshes = GetComponentsInChildren<MeshRenderer>();
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
@@ -113,7 +113,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     private void FixedUpdate()
     {
-      
+
     }
     void PlayerByItem(Collider other)
     {
@@ -182,7 +182,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     void OnDie()
     {
         playerAni.DoDie();
-       isDead = true;
+        isDead = true;
         gameManager.GameOver();
     }
     void FreezeRotatoin()
@@ -197,6 +197,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     void Granade()
     {
+        Debug.Log(hasGreandes);
         if (hasGreandes == 0)
         { return; }
         if (keyCodeManager._gDown && !isReload && !isSwap)
@@ -232,7 +233,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     IEnumerator ReloadOut()//리로딩 실질시스템
     {
         playerAni.DoReload();
-         isReload = true;
+        isReload = true;
         yield return new WaitForSeconds(1f);
         int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
 
@@ -257,7 +258,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         {
             equipWeapon.Use();
             playerAni.WeaponTypeAttack(equipWeapon);
-                fireDelay = 0;
+            fireDelay = 0;
         }
     }
     void PlayerMove()
@@ -284,44 +285,46 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
         transform.LookAt(transform.position + moveVec);
     }
- 
+
     void Dodge()
     {
-        if (keyCodeManager._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap)
+        if (keyCodeManager._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap&& isDodge == false)
         {
             DodgeVec = moveVec;
             speed *= 2;
             playerAni.DoDodge();
-             isDodge = true;
+            isDodge = true;
             StartCoroutine(DodgeOut());
         }
     }
     IEnumerator DodgeOut()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         speed *= 0.5f;
         isDodge = false;
     }
+    int weaponIndex = -1;
+
     void Swap()
     {
         if (keyCodeManager._sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
         if (keyCodeManager._sDown2 && (hasWeapons[1] == false || equipWeaponIndex == 1)) { return; }
         if (keyCodeManager._sDown3 && (hasWeapons[2] == false || equipWeaponIndex == 2)) { return; }
 
-        int weaponIndex = -1;
         if (keyCodeManager._sDown1) { weaponIndex = 0; }
         if (keyCodeManager._sDown2) { weaponIndex = 1; }
         if (keyCodeManager._sDown3) { weaponIndex = 2; }
 
-        if ((keyCodeManager._sDown1 || keyCodeManager._sDown2 || keyCodeManager._sDown3) && isJump == false && isDodge == false)//
+        if ((keyCodeManager._sDown1 || keyCodeManager._sDown2 || keyCodeManager._sDown3)  && isDodge == false)//
         {
             if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
             equipWeaponIndex = weaponIndex;
             equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+           Debug.Log( equipWeapon.name);
             weapons[weaponIndex].SetActive(true);
 
             playerAni.DoSwap();
-               isSwap = true;
+            isSwap = true;
             StartCoroutine(SwapOut());
         }
     }

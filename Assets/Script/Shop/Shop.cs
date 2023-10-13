@@ -15,7 +15,7 @@ public class Shop : MonoBehaviour
     public Transform[] itemPos;
     public GameObject[] itemObj;
     public string[] TalkData;
-
+    int price;
     public void Enter(PlayerUnit playerMob)
     {
         enterPlayer = playerMob;
@@ -26,9 +26,9 @@ public class Shop : MonoBehaviour
         UIGroup.anchoredPosition = Vector3.down * 1000;
         Animator.SetTrigger("doHello");
     }
-    public void Buy(int index)
+    public void ItemBuy(int index)
     {
-        int price = itemPrice[index];
+         price = itemPrice[index];
         if (price > enterPlayer.coin)
         {
             StopCoroutine(Talk());

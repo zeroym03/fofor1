@@ -35,6 +35,7 @@ public class TestCanvas : MonoBehaviour
         GenericSinglngton<UIManager>.Instance.WeaponShopUI = WeaponShopUI;
     }
 
+
     void Update()
     {
         if (GenericSinglngton<GameManager>.Instance.isBattel)//UI

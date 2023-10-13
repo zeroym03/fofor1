@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject ItemShop { get; set; }
     public GameObject WeaponShop;
-    Shop _itemShop;
-    Shop _WeaponShop;
+   public Shop _itemShop;
+   public Shop _WeaponShop;
 
     public GameObject StartZon;
 
