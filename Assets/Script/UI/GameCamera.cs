@@ -6,7 +6,7 @@ public class GameCamera : MonoBehaviour
 {
   public  Transform target { get; set; }
      Vector3 offest;
-    private void Awake()
+    public void Set()
     {
         target = GenericSinglngton<GameManager>.Instance.player.transform;
         offest =    new Vector3(0,30,-18);

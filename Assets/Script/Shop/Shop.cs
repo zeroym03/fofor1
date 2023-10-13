@@ -15,6 +15,7 @@ public class Shop : MonoBehaviour
     public Transform[] itemPos;
     public GameObject[] itemObj;
     public string[] TalkData;
+
     public void Enter(PlayerUnit playerMob)
     {
         enterPlayer = playerMob;

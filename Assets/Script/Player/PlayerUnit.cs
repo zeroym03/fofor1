@@ -9,7 +9,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     [SerializeField] GameObject[] weapons;
     [SerializeField] GameObject[] grenades;
     [SerializeField] GameObject granadeobj;
-    public Camera follwouCamera;
+     Camera follwouCamera;
     public bool[] hasWeapons;
    GameManager gameManager;
     GetKeyCodeManager keyCodeManager;
@@ -48,6 +48,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     private void Awake()
     {
+
         PlayerGetComponent();
         print("Hero InitPlayer()");
     }
@@ -70,6 +71,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
    
     void PlayerGetComponent()
     {
+        follwouCamera = GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<Camera>();
         playerAni = GetComponent<PlayerAni>();
         keyCodeManager = GenericSinglngton<GetKeyCodeManager>.Instance;
         plrigidbody = GetComponent<Rigidbody>();

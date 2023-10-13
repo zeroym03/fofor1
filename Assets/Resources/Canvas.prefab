@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 4251406466846968024}
   - component: {fileID: 4843529438961812964}
   m_Layer: 5
-  m_Name: 'Game Time Text '
+  m_Name: 'Current Time Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4251406466846968022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 014d76f4bea16254b961eae71ec02f24, type: 3}
   m_Name: 
@@ -2200,7 +2200,7 @@ GameObject:
   - component: {fileID: 4251406466858220345}
   - component: {fileID: 4251406466858220344}
   m_Layer: 5
-  m_Name: To CoinImage
+  m_Name: Current CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2435,7 +2435,7 @@ GameObject:
   - component: {fileID: 4251406466913795694}
   - component: {fileID: 4251406466913795693}
   m_Layer: 5
-  m_Name: BossToHP
+  m_Name: CurrentBossHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3088,7 +3088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4251406467032149478}
   m_Layer: 5
-  m_Name: ScoreUI
+  m_Name: Current ScoreUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4891,7 +4891,7 @@ GameObject:
   - component: {fileID: 4251406467407807197}
   - component: {fileID: 4251406467407807196}
   m_Layer: 5
-  m_Name: To CoinText
+  m_Name: Current CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5848,7 +5848,7 @@ GameObject:
   - component: {fileID: 4251406467706856177}
   - component: {fileID: 4251406467706856176}
   m_Layer: 5
-  m_Name: To AmmoText
+  m_Name: Current  AmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6296,7 +6296,7 @@ GameObject:
   - component: {fileID: 4251406467787618772}
   - component: {fileID: 4251406467787618771}
   m_Layer: 5
-  m_Name: Weapon Image
+  m_Name: Machine Gun Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6527,8 +6527,9 @@ GameObject:
   - component: {fileID: 4251406467848515088}
   - component: {fileID: 4251406467848515090}
   - component: {fileID: 4251406467848515089}
+  - component: {fileID: 8103026019358743179}
   m_Layer: 5
-  m_Name: 'To Score Text '
+  m_Name: 'Current Score Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6596,6 +6597,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &8103026019358743179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406467848515119}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4150ff30d887e9a49b550abb959f489a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4251406467874104413
 GameObject:
   m_ObjectHideFlags: 0
@@ -6608,7 +6621,7 @@ GameObject:
   - component: {fileID: 4251406467874104384}
   - component: {fileID: 4251406467874104415}
   m_Layer: 5
-  m_Name: WeaponImege
+  m_Name: Hammer Imege
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6760,7 +6773,7 @@ GameObject:
   - component: {fileID: 4251406468104176441}
   - component: {fileID: 4251406468104176440}
   m_Layer: 5
-  m_Name: To Score Image
+  m_Name: Current  Score Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7401,7 +7414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4251406468247413965}
   m_Layer: 5
-  m_Name: StageUI
+  m_Name: Stage,TimeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7522,6 +7535,7 @@ GameObject:
   - component: {fileID: 4251406468255605065}
   - component: {fileID: 4251406468255605064}
   - component: {fileID: 2778840744742065105}
+  - component: {fileID: 2848043850769148356}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7625,6 +7639,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13543104b833c54c93ef4ba702da2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2848043850769148356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251406468255605063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4954d14ffdeb24f9baa44896013e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScoreText: {fileID: 4251406467848515089}
+  playTimeText: {fileID: 4251406466846968024}
+  currentHpText: {fileID: 4251406468426243324}
+  currentAmmoText: {fileID: 4251406467706856176}
+  currentCoinText: {fileID: 4251406467407807196}
+  enumyAText: {fileID: 4251406468105838940}
+  enumyBText: {fileID: 4251406468482814491}
+  enumyCText: {fileID: 4251406467679822383}
+  hammerImege: {fileID: 4251406467874104415}
+  handgunImege: {fileID: 4251406468313670932}
+  machineGunImege: {fileID: 4251406467787618771}
+  controlRImege: {fileID: 4251406467205146630}
+  BossHPGroup: {fileID: 4251406466900702307}
+  BossHPBar: {fileID: 4251406466913795692}
+  ItemShopUI: {fileID: 4251406467630212324}
+  WeaponShopUI: {fileID: 4251406466851987817}
 --- !u!1 &4251406468313670930
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,7 +7679,7 @@ GameObject:
   - component: {fileID: 4251406468313670933}
   - component: {fileID: 4251406468313670932}
   m_Layer: 5
-  m_Name: Weapon Image
+  m_Name: handgun Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7750,7 +7792,7 @@ GameObject:
   - component: {fileID: 4251406468333423585}
   - component: {fileID: 4251406468333423584}
   m_Layer: 5
-  m_Name: To AmmoImage
+  m_Name: Current  AmmoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8095,7 +8137,7 @@ GameObject:
   - component: {fileID: 4251406468425439580}
   - component: {fileID: 4251406468425439579}
   m_Layer: 5
-  m_Name: To HPImage
+  m_Name: Current HPImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8171,7 +8213,7 @@ GameObject:
   - component: {fileID: 4251406468426243325}
   - component: {fileID: 4251406468426243324}
   m_Layer: 5
-  m_Name: To HPText
+  m_Name: Current HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8252,7 +8294,7 @@ GameObject:
   - component: {fileID: 4251406468442038471}
   - component: {fileID: 3567382722354771396}
   m_Layer: 5
-  m_Name: 'To Stage Text '
+  m_Name: 'Current  Stage Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public PlayerUnit playerUnit { get; set; }
-  public  GameObject player;
+    public GameObject player;
     public BossMob boss;
     public int stage { get; set; } = 1;
     public int score = 0;
@@ -17,13 +17,16 @@ public class GameManager : MonoBehaviour
     public bool isBattel;
 
     public int enemyCntA { get; set; }
-    public int enemyCntB;
-    public int enemyCntC;
-    public int enemyCntD;
+    public int enemyCntB { get; set; }
+    public int enemyCntC { get; set; }
+    public int enemyCntD { get; set; }
 
 
     public GameObject ItemShop { get; set; }
     public GameObject WeaponShop;
+    Shop _itemShop;
+    Shop _WeaponShop;
+
     public GameObject StartZon;
 
     public Transform[] enemyZones;
@@ -41,11 +44,20 @@ public class GameManager : MonoBehaviour
     }
     public void GameStart()
     {
+        ShopSetting();
+        GenericSinglngton<UIManager>.Instance.gameCam = Instantiate(Resources.Load("Game Camera") as GameObject);
         player = Instantiate(Resources.Load("Character/Player").GameObject());
         playerUnit = player.GetComponent<PlayerUnit>();
-        GenericSinglngton<UIManager>.Instance.gameCam = Resources.Load("Game Camera") as GameObject;
-        Instantiate(GenericSinglngton<UIManager>.Instance.gameCam);
+        GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<GameCamera>().Set();
         GenericSinglngton<UIManager>.Instance.UIGameStart();
+    }
+    void ShopSetting()
+    {
+        _itemShop = ItemShop.GetComponentInChildren<Shop>();
+        _itemShop.UIGroup = GenericSinglngton<UIManager>.Instance.ItemShopUI;
+
+        _WeaponShop = WeaponShop.GetComponentInChildren<Shop>();
+        _WeaponShop.UIGroup = GenericSinglngton<UIManager>.Instance.WeaponShopUI;
     }
     public void GameOver()
     {
@@ -112,7 +124,7 @@ public class GameManager : MonoBehaviour
         boss = null;
         StageEnd();
     }
-  public  void AddEnemy()
+    public void AddEnemy()
     {
         enemies[0] = Resources.Load("Character/Enemy A").GameObject();
         enemies[1] = Resources.Load("Character/Enemy B").GameObject();

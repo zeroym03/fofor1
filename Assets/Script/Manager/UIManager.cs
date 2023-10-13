@@ -17,23 +17,8 @@ public class UIManager : MonoBehaviour
     public Text maxScore;
     public Text ScoreText;
 
-    public Text stageText;
-
-    public Text playHealtText;
-    public Text playAmmoText;
-    public Text playCoinText;
-
-    public Image weaponImage1;
-    public Image weaponImage2;
-    public Image weaponImage3;
-    public Image weaponImageR;
-
-    public Text enemyTextA;
-    public Text enemyTextB;
-    public Text enemyTextC;
-
-    public RectTransform BossHPGroup;
-    public RectTransform BossHPBar;
+      public RectTransform ItemShopUI;
+    public RectTransform WeaponShopUI;
     public GameObject menuCam { get; set; }
     public GameObject gameCam { get; set; }
 
@@ -47,7 +32,6 @@ public class UIManager : MonoBehaviour
         gameCamera = gameCam.GetComponent<GameCamera>();
         menuPanal.SetActive(false);
         gamePanal.SetActive(true);
-
     }
     public void UIGameOver()//UI
     {
@@ -76,6 +60,7 @@ public class UIManager : MonoBehaviour
     }
     public void TextCH(Text CHText, string instring)
     {
+        if(CHText!=null)
         CHText.text = instring;
     }
     private void LateUpdate()

@@ -74,10 +74,13 @@
     <Compile Include="Assets\Script\UI\GameCamera.cs" />
     <Compile Include="Assets\Script\UI\MenuCamera.cs" />
     <Compile Include="Assets\Script\System\Bullet.cs" />
+    <Compile Include="Assets\Script\UI\EnemyZone.cs" />
     <Compile Include="Assets\Script\Boss\BossRock.cs" />
     <Compile Include="Assets\Script\System\GameStartSystem.cs" />
     <Compile Include="Assets\Script\PlayerManager_State\PlayerManagerScene.cs" />
     <Compile Include="Assets\Script\Player\PlayerAni.cs" />
+    <Compile Include="Assets\Script\UI\Cancas\StageText.cs" />
+    <Compile Include="Assets\Script\UI\IsBattelTime.cs" />
     <Compile Include="Assets\Script\Boss\BossMob.cs" />
     <Compile Include="Assets\Script\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Script\UI\UIButtenManager.cs" />
@@ -91,9 +94,8 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\UI\IsBattelTime.cs" />
-    <Compile Include="Assets\Script\UI\EnemyZone.cs" />
-    <Compile Include="Assets\Script\UI\Cancas\StageText.cs" />
+    <Compile Include="Assets\Script\UI\Cancas\CurrentScoreText.cs" />
+    <Compile Include="Assets\Script\UI\Cancas\TestCanvas.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
