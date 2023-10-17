@@ -11,18 +11,17 @@ public class Enemy : MonoBehaviour
     public Type type;
 
 
-    public int MaxHP;
-    public int CurHP;
-    public int score;
+    public int MaxHP; //변경불가 퍼블릭으로 전부다른정보로 할당중
+    public int CurHP; //
+    [SerializeField] int score;
 
-    public GameManager manager;
     public Transform target;
     public BoxCollider meleeArea;
-    public GameObject bullet;
-    public GameObject[] coins;
-    public bool isAttack;
-    public bool isChase;
-    public bool isDead;
+    public GameObject bullet { get;set; }
+    public GameObject[] coins;//
+    protected bool isAttack;
+    protected bool isChase;
+    protected bool isDead;
 
     protected MeshRenderer[] meshs;
     protected Rigidbody rb;
@@ -134,11 +133,10 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Melee")
         {
             Weapon weapon = other.GetComponent<Weapon>();
-            CurHP -= weapon.Damege;
+            CurHP -= weapon.damege;
             Vector3 reactVec = transform.position - other.transform.position;
             StartCoroutine(CHColor());
             StartCoroutine(OnDamege(reactVec, false));
@@ -152,7 +150,6 @@ public class Enemy : MonoBehaviour
             StartCoroutine(CHColor());
             StartCoroutine(OnDamege(reactVec, false));
         }
-
     }
     public void HitByGranade(Vector3 explosionPos)
     {
@@ -171,24 +168,26 @@ public class Enemy : MonoBehaviour
             isChase = false;
             agent.enabled = false;
             animator.SetTrigger("Die");
-            PlayerUnit player = target.GetComponent<PlayerUnit>();
-            manager.score += score;
+            // PlayerUnit player = target.GetComponent<PlayerUnit>();
+            Debug.Log(GenericSinglngton<GameManager>.Instance.score);
+            GenericSinglngton<GameManager>.Instance.score += score;
+            Debug.Log(GenericSinglngton<GameManager>.Instance.score);
             int ranCoin = Random.Range(0, 3);
             Instantiate(coins[ranCoin], transform.position, Quaternion.identity);
 
             switch (type)
             {
                 case Type.A:
-                    manager.enemyCntA--;
+                    GenericSinglngton<GameManager>.Instance.enemyCntA--;
                     break;
                 case Type.B:
-                    manager.enemyCntB--;
+                    GenericSinglngton<GameManager>.Instance.enemyCntB--;
                     break;
                 case Type.C:
-                    manager.enemyCntC--;
+                    GenericSinglngton<GameManager>.Instance.enemyCntC--;
                     break;
                 case Type.D:
-                    manager.enemyCntD--;
+                    GenericSinglngton<GameManager>.Instance.enemyCntD--;
                     break;
             }
             if (isgranade)
@@ -218,16 +217,18 @@ public class Enemy : MonoBehaviour
             foreach (MeshRenderer Mat in meshs)
             {
                 Mat.material.color = Color.red;
-                yield return new WaitForSeconds(0.2f);
-                Mat.material.color = Color.white;
 
             }
-        else
+        if (CurHP <= 0)
         {
             foreach (MeshRenderer Mat in meshs)
                 Mat.material.color = Color.black;
         }
-        
+        yield return new WaitForSeconds(0.2f);
+        foreach (MeshRenderer Mat in meshs)
+            Mat.material.color = Color.white;
+       
+
     }
 }
 

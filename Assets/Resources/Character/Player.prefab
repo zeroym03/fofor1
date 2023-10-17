@@ -20347,7 +20347,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!65 &7433707222993140005
 BoxCollider:
@@ -20384,13 +20384,6 @@ MonoBehaviour:
   - {fileID: 226634034875660606}
   - {fileID: 226634034005307672}
   granadeobj: {fileID: 7412157949401285219, guid: d6d0497e18cb8eb4bab39bb4466923ce, type: 3}
-  hasWeapons: 00000000
-  ammo: 100
-  coin: 10000
-  health: 200
-  hasGreandes: 0
-  maxammo: 300
-  maxhealth: 300
   equipWeapon: {fileID: 0}
 --- !u!114 &-1285852627413552915
 MonoBehaviour:
@@ -20478,7 +20471,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1509416925549156319, guid: a2e051660762cbe4494c17a095a95e10, type: 3}
   m_PrefabInstance: {fileID: 3787162317255047072}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2110727986
+--- !u!114 &4518905538837621359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20487,20 +20480,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2340801696406085759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f900f02057390b74e80cd1f44bc6f488, type: 3}
+  m_Script: {fileID: 11500000, guid: 4aa5a0d30c8442c48816ae39485bd208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  Damege: 0
-  maxAmmo: 10
+  maxAmmo: 17
   curAmmo: 0
   rate: 0.3
-  meleeArea: {fileID: 0}
-  trailEffact: {fileID: 0}
   bulletpos: {fileID: 1131184970}
-  bullet: {fileID: 5377955414198954868, guid: 010a5f19d53f40247913f22c7299ca89, type: 3}
   bulletCasePos: {fileID: 380474065}
-  bulletCase: {fileID: 2791712501254933522, guid: 5f8f2409c54fb6141963e05cd7b57019, type: 3}
 --- !u!4 &3114206230954572485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2285952976136801637, guid: a2e051660762cbe4494c17a095a95e10, type: 3}
@@ -20592,7 +20579,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 547435428816858648, guid: 203326381d9b54d489646c6c2f61f53a, type: 3}
   m_PrefabInstance: {fileID: 3839816860781156456}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &733786124
+--- !u!114 &3126912668867372591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20601,20 +20588,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3661748140534216304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f900f02057390b74e80cd1f44bc6f488, type: 3}
+  m_Script: {fileID: 11500000, guid: b834c8b807d206841b915bcc5a5703b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  Damege: 0
   maxAmmo: 40
   curAmmo: 0
-  rate: 0.12
-  meleeArea: {fileID: 0}
-  trailEffact: {fileID: 0}
+  rate: 0.1
   bulletpos: {fileID: 1131184970}
-  bullet: {fileID: 7893738694001286623, guid: 7522aa0da43d1a64e81de50c45a7ee9f, type: 3}
   bulletCasePos: {fileID: 51918187}
-  bulletCase: {fileID: 2791712501254933522, guid: 5f8f2409c54fb6141963e05cd7b57019, type: 3}
 --- !u!4 &4150898446054550730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 924136447322616994, guid: 203326381d9b54d489646c6c2f61f53a, type: 3}
@@ -20920,7 +20901,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &578343151
+--- !u!114 &2162019874244565376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20929,20 +20910,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8474781350277791259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f900f02057390b74e80cd1f44bc6f488, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fa7a4a6dddd3204a95d12e4f2f7a1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  Damege: 25
   maxAmmo: 0
   curAmmo: 0
-  rate: 0.4
+  rate: 0.9
   meleeArea: {fileID: 578343150}
   trailEffact: {fileID: 86108933}
-  bulletpos: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletCasePos: {fileID: 0}
-  bulletCase: {fileID: 0}
 --- !u!4 &9139958755559597217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1873072230472789115, guid: c2ec4bfd1a6491c49a0c34b8dc3a7639, type: 3}

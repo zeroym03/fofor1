@@ -8,7 +8,7 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
     public GameObject canvas { get; set; }
     public GameObject enemyZon { get; set; }
     public GameObject itemShop { get; set; }
-    public GameObject WeaponShop { get; set; }
+    public GameObject weaponShop { get; set; }
     public GameObject zone { get; set; }
 
     void Awake()
@@ -27,7 +27,8 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
         GenericSinglngton<GameManager>.Instance.StartZon = Instantiate(Resources.Load("Zone") as GameObject);
         GenericSinglngton<UIManager>.Instance.menuCam = Instantiate(Resources.Load("Camera/Menu Camera") as GameObject);
         GenericSinglngton<UIManager>.Instance.gamePanal.SetActive(false);
-
+        Debug.Log(GenericSinglngton<UIManager>.Instance.gameOverPanal);
+        GenericSinglngton<UIManager>.Instance.gameOverPanal.SetActive(false);
 
 
 

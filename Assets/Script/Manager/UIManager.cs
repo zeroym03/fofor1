@@ -9,28 +9,31 @@ using UnityEngine.SocialPlatforms.Impl;
 public class UIManager : MonoBehaviour
 {
 
-    GameCamera gameCamera;
+   // GameCamera gameCamera;
 
     public GameObject menuPanal;
     public GameObject gamePanal;
     public GameObject gameOverPanal;
     public Text maxScore;
-    public Text ScoreText;
+    public Text scoreText;
+    public Text itemTalkText;
+    public Text weaponTalkText;
 
-      public RectTransform ItemShopUI;
+    public RectTransform ItemShopUI;
     public RectTransform WeaponShopUI;
     public GameObject menuCam { get; set; }
     public GameObject gameCam { get; set; }
 
     PlayerUnit playerUnit;
-    Text bestScoreText;
+    public Text bestScoreText;
 
     public void UIGameStart()
     {
         menuCam.SetActive(false);//UI
         gameCam.SetActive(true);
-        gameCamera = gameCam.GetComponent<GameCamera>();
+   //     gameCamera = gameCam.GetComponent<GameCamera>();
         menuPanal.SetActive(false);
+    
         gamePanal.SetActive(true);
     }
     public void UIGameOver()//UI
@@ -46,10 +49,7 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("MaxScore", GenericSinglngton<GameManager>.Instance.score);
         }
     }
-    public void ReStart()//UI
-    {
-        SceneManager.LoadScene(0);
-    }
+    
     public void BaseSet()
     {
         maxScore.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));

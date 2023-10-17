@@ -4966,8 +4966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62210b31ddbe5845be4b576da6faff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIGroup: {fileID: 0}
-  Animator: {fileID: 8898396397519011112}
+  animator: {fileID: 0}
   talkText: {fileID: 0}
   itemPrice: 64000000b80b000088130000
   itemPos:
@@ -4978,7 +4977,7 @@ MonoBehaviour:
   - {fileID: 7442219400506760302, guid: 4177f6a34fdb5884e887bf6524aaf7fb, type: 3}
   - {fileID: 654740398184343030, guid: 492a2104bb9ed5d4a882ded4bb1d9ed2, type: 3}
   - {fileID: 7764295512153304238, guid: cdeef16430a03944a8214061d234a0c4, type: 3}
-  TalkData:
+  talkData:
   - "...\uBB34\uAE30"
   - "...\uBAA8\uC798\uB77C"
 --- !u!1 &8898396397975371711

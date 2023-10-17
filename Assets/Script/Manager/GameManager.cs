@@ -4,15 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public PlayerUnit playerUnit { get; set; }
     public GameObject player;
     public BossMob boss;
-    public int stage { get; set; } = 1;
-    public int score = 0;
+    public int stage { get; set; } = 5;
+    public int score { get; set; } = 0;
 
     public bool isBattel;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject StartZon;
 
-    public Transform[] enemyZones;
+    public Transform[] enemyZones { get; set; }
     public GameObject[] enemies = new GameObject[4];
     public List<int> enemyList;
 
@@ -75,15 +75,19 @@ public class GameManager : MonoBehaviour
         isBattel = true;
         StartCoroutine(inBattel());
     }
+    public void ReStart()//UI
+    {
+        SceneManager.LoadScene(0);
+    }
     IEnumerator inBattel() //game 
     {
         if (stage % 5 == 0)
         {
             enemyCntD++;
-            GameObject instantenemy = Instantiate(enemies[3], enemyZones[0].position, enemyZones[0].rotation);
+            GameObject instantenemy = Instantiate(enemies[3], enemyZones[1].position, enemyZones[1].rotation);
             Enemy enemy = instantenemy.GetComponent<Enemy>();
             enemy.target = playerUnit.transform;
-            enemy.manager = this;
+           
             boss = instantenemy.GetComponent<BossMob>();
         }
         else
@@ -111,7 +115,7 @@ public class GameManager : MonoBehaviour
                 GameObject instantenemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
                 Enemy enemy = instantenemy.GetComponent<Enemy>();
                 enemy.target = playerUnit.transform;
-                enemy.manager = this;
+               
                 enemyList.RemoveAt(0);
                 yield return new WaitForSeconds(5);
             }

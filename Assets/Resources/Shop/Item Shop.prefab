@@ -5203,8 +5203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62210b31ddbe5845be4b576da6faff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIGroup: {fileID: 0}
-  Animator: {fileID: 3719393842111907317}
+  animator: {fileID: 3719393842111907317}
   talkText: {fileID: 0}
   itemPrice: 64000000c8000000e8030000
   itemPos:
@@ -5215,9 +5214,9 @@ MonoBehaviour:
   - {fileID: 3241063426788935647, guid: 5e414aef6d715d4479d91c8a45be4d96, type: 3}
   - {fileID: 5266237505564416131, guid: 233aaaed5043d404d986166542862f26, type: 3}
   - {fileID: 4478933306261831803, guid: 82dc491c6d1b22749aae4a5f2fa889b6, type: 3}
-  TalkData:
+  talkData:
   - "\uC548\uB155. \uBB50\uAC00 \uD544\uC694\uD574?"
-  - "\uC5B4? \uAE08\uC561\uC774 \uBAA8\uC798\uB77C \uD655\uC778\uD574\uBD10 "
+  - "\uAE08\uC561\uC774 \uBAA8\uC798\uB77C \uD55C\uBC88 \uD655\uC778\uD574\uBD10"
 --- !u!1001 &3719393841044540343
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,27 +8,29 @@ public class Shop : MonoBehaviour
     PlayerUnit enterPlayer;
 
 
-    public RectTransform UIGroup;
-    public Animator Animator;
+    public RectTransform UIGroup { get; set; }
+    [SerializeField] Animator animator;
     public Text talkText;
     public int[] itemPrice;
     public Transform[] itemPos;
     public GameObject[] itemObj;
-    public string[] TalkData;
+    public string[] talkData;
     int price;
     public void Enter(PlayerUnit playerMob)
     {
         enterPlayer = playerMob;
+        enterPlayer.isShop = true;
         UIGroup.anchoredPosition = Vector3.zero;
     }
     public void Exit()
     {
         UIGroup.anchoredPosition = Vector3.down * 1000;
-        Animator.SetTrigger("doHello");
+        animator.SetTrigger("doHello");
+        enterPlayer.isShop = false;
     }
     public void ItemBuy(int index)
     {
-         price = itemPrice[index];
+        price = itemPrice[index];
         if (price > enterPlayer.coin)
         {
             StopCoroutine(Talk());
@@ -41,8 +43,10 @@ public class Shop : MonoBehaviour
     }
     IEnumerator Talk()
     {
-        talkText.text = TalkData[1];
+        GenericSinglngton<UIManager>.Instance.weaponTalkText.text = talkData[1];
+        GenericSinglngton<UIManager>.Instance.itemTalkText.text = talkData[1];
         yield return new WaitForSeconds(1f);
-        talkText.text = TalkData[0];
+        GenericSinglngton<UIManager>.Instance.weaponTalkText.text = talkData[0];
+        GenericSinglngton<UIManager>.Instance.itemTalkText.text = talkData[0];
     }
 }

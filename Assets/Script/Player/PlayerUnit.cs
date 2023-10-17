@@ -10,31 +10,28 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     [SerializeField] GameObject[] grenades;
     [SerializeField] GameObject granadeobj;
     Camera follwouCamera;
-    public bool[] hasWeapons;
-    GameManager gameManager;
-    GetKeyCodeManager keyCodeManager;
+   public  bool[] hasWeapons { get; set; } = new bool[4];
 
-    public int ammo;
-    public int coin;
-    public int health;
-    public int hasGreandes;
-
-    public int maxammo;
-    public int maxhealth = 300;
+    public int ammo { get; set; } = 100;//프로포티 초기화 필요
+    public int coin { get; set; } = 100;
+    public int health { get; set; } = 300;
+    public int hasGreandes { get; set; } = 0;
+    public int maxammo { get; set; } = 300;
+    public int maxhealth { get; set; } = 300;
     int maxcoin = int.MaxValue;
     int maxhasGreandes = 4;
 
 
-    float fireDelay;
+    float fireDelay = 0f;
 
-    bool isShop;
+    public bool isShop { get; set; } = false;
     bool isJump;
-    bool isDodge;
-    bool isSwap;
+    bool isDodge = false;
+    bool isSwap = false;
     bool isFireReady = true;
-    bool isBorder;
+    bool isBorder = false;
     bool isDamege = false;
-    bool isDead;
+    bool isDead = false;
     bool isReload = false;
 
     Vector3 moveVec;
@@ -48,7 +45,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     private void Awake()
     {
-
         PlayerGetComponent();
         print("Hero InitPlayer()");
     }
@@ -73,7 +69,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     {
         follwouCamera = GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<Camera>();
         playerAni = GetComponent<PlayerAni>();
-        keyCodeManager = GenericSinglngton<GetKeyCodeManager>.Instance;
         plrigidbody = GetComponent<Rigidbody>();
         meshes = GetComponentsInChildren<MeshRenderer>();
     }
@@ -83,11 +78,11 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (other.tag == "Weapon" || other.tag == "Shop")
         {
             nearobjeact = other.gameObject;
+            Debug.Log(isShop);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-
         if (other.tag == "Weapon")
         {
             nearobjeact = null;
@@ -110,10 +105,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         {
             DamegeStart(other);
         }
-    }
-    private void FixedUpdate()
-    {
-
     }
     void PlayerByItem(Collider other)
     {
@@ -183,7 +174,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     {
         playerAni.DoDie();
         isDead = true;
-        gameManager.GameOver();
+        GenericSinglngton<GameManager>.Instance.GameOver();
     }
     void FreezeRotatoin()
     {
@@ -197,10 +188,9 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     void Granade()
     {
-        Debug.Log(hasGreandes);
         if (hasGreandes == 0)
         { return; }
-        if (keyCodeManager._gDown && !isReload && !isSwap)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._gDown && !isReload && !isSwap)
         {
             Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -225,7 +215,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (ammo <= 0) { return; }
         if (isReload) { return; }
         if (equipWeapon.curAmmo == equipWeapon.maxAmmo) { return; }
-        if (keyCodeManager._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
         {
             StartCoroutine(ReloadOut());
         }
@@ -254,7 +244,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         Turn();
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
-        if (keyCodeManager._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
         {
             equipWeapon.Use();
             playerAni.WeaponTypeAttack(equipWeapon);
@@ -262,17 +252,19 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
     }
     void PlayerMove()
-    {
-        moveVec = new Vector3(keyCodeManager._axisHorx, 0, keyCodeManager._axisVerz).normalized;
-        if (isDodge == true) { moveVec = DodgeVec; }
-        if (isSwap == true || isReload || isFireReady == false) { moveVec = Vector3.zero; }
-        if (isBorder == false) { transform.position += moveVec * speed * Time.deltaTime; }
+    {if(isShop == false)
+        {
+            moveVec = new Vector3(GenericSinglngton<GetKeyCodeManager>.Instance._axisHorx, 0, GenericSinglngton<GetKeyCodeManager>.Instance._axisVerz).normalized;
+            if (isDodge == true) { moveVec = DodgeVec; }
+            if (isSwap == true || isReload || isFireReady == false) { moveVec = Vector3.zero; }
+            if (isBorder == false) { transform.position += moveVec * speed * Time.deltaTime; }
 
-        Turn();
+            Turn();
+        }
     }
     void Turn()
     {
-        if (keyCodeManager._fDown)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown)
         {
             Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -288,7 +280,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     void Dodge()
     {
-        if (keyCodeManager._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap&& isDodge == false)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap&& isDodge == false)
         {
             DodgeVec = moveVec;
             speed *= 2;
@@ -307,15 +299,15 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     void Swap()
     {
-        if (keyCodeManager._sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
-        if (keyCodeManager._sDown2 && (hasWeapons[1] == false || equipWeaponIndex == 1)) { return; }
-        if (keyCodeManager._sDown3 && (hasWeapons[2] == false || equipWeaponIndex == 2)) { return; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown2 && (hasWeapons[1] == false || equipWeaponIndex == 1)) { return; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown3 && (hasWeapons[2] == false || equipWeaponIndex == 2)) { return; }
 
-        if (keyCodeManager._sDown1) { weaponIndex = 0; }
-        if (keyCodeManager._sDown2) { weaponIndex = 1; }
-        if (keyCodeManager._sDown3) { weaponIndex = 2; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown1) { weaponIndex = 0; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown2) { weaponIndex = 1; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown3) { weaponIndex = 2; }
 
-        if ((keyCodeManager._sDown1 || keyCodeManager._sDown2 || keyCodeManager._sDown3)  && isDodge == false)//
+        if ((GenericSinglngton<GetKeyCodeManager>.Instance._sDown1 || GenericSinglngton<GetKeyCodeManager>.Instance._sDown2 || GenericSinglngton<GetKeyCodeManager>.Instance._sDown3)  && isDodge == false)//
         {
             if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
             equipWeaponIndex = weaponIndex;
@@ -335,7 +327,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     void Interation()
     {
-        if (keyCodeManager._iDown == true && nearobjeact != null && isJump == false && isDodge == false)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._iDown == true && nearobjeact != null && isJump == false && isDodge == false)
         {
             if (nearobjeact.tag == "Weapon")
             {
@@ -350,7 +342,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             {
                 Shop shop = nearobjeact.GetComponent<Shop>();
                 shop.Enter(this);
-                isShop = false;
+                //isShop = false;
                 nearobjeact = null;
             }
         }
