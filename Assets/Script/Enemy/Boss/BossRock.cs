@@ -23,8 +23,8 @@ yield return new WaitForSeconds(2.2f);
     {
         while (!isShoot)
         {
-            angularPawer += 0.01f;
-            scalevalue += 0.0025f;//0.002
+            angularPawer += 0.02f;
+            scalevalue += 0.005f;//0.002
             transform.localScale = Vector3.one * scalevalue;
             body.AddTorque(transform.right * angularPawer, ForceMode.Acceleration);
             yield return null;

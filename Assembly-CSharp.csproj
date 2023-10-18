@@ -89,7 +89,7 @@
     <Compile Include="Assets\Script\UI\CanvasCS\UIButtenManager.cs" />
     <Compile Include="Assets\Script\System\Missile.cs" />
     <Compile Include="Assets\Script\UI\ZoneCS\StartZone.cs" />
-    <Compile Include="Assets\Script\UI\CanvasCS\TestCanvas.cs" />
+    <Compile Include="Assets\Script\UI\CanvasCS\GameCanvas.cs" />
     <Compile Include="Assets\Script\Shop\WeaponShopText.cs" />
     <Compile Include="Assets\Script\Manager\GenericSinglngton.cs" />
     <Compile Include="Assets\Script\Player\Item.cs" />
@@ -99,6 +99,7 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\VamserWeapon\VAMSUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

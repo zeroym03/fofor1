@@ -7,6 +7,6 @@ public class MenuPanel : MonoBehaviour
 {
     void Awake()
     {
-        GenericSinglngton<UIManager>.Instance.menuPanal = gameObject;
+        GenericSinglngton<UIManager>.Instance.menuPanel = gameObject;
     }
 }

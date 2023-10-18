@@ -11,9 +11,10 @@ public class UIManager : MonoBehaviour
 
    // GameCamera gameCamera;
 
-    public GameObject menuPanal;
-    public GameObject gamePanal;
-    public GameObject gameOverPanal;
+    public GameObject menuPanel;
+    public GameObject gamePanel;
+    public GameObject gameOverPanel;
+    public GameObject WeaponPanel;
     public Text maxScore;
     public Text scoreText;
     public Text itemTalkText;
@@ -32,14 +33,14 @@ public class UIManager : MonoBehaviour
         menuCam.SetActive(false);//UI
         gameCam.SetActive(true);
    //     gameCamera = gameCam.GetComponent<GameCamera>();
-        menuPanal.SetActive(false);
+        menuPanel.SetActive(false);
     
-        gamePanal.SetActive(true);
+        gamePanel.SetActive(true);
     }
     public void UIGameOver()//UI
     {
-        gamePanal.SetActive(false);
-        gameOverPanal.SetActive(true);
+        gamePanel.SetActive(false);
+        gameOverPanel.SetActive(true);
         int maxScore = PlayerPrefs.GetInt("MaxScore");
         bestScoreText.text = string.Format("{0:n0}", maxScore);
 

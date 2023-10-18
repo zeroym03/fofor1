@@ -6,6 +6,6 @@ public class GameOverPanel : MonoBehaviour
 {
     private void Awake()
     {
-        GenericSinglngton<UIManager>.Instance.gameOverPanal = this.gameObject;
+        GenericSinglngton<UIManager>.Instance.gameOverPanel = this.gameObject;
     }
 }

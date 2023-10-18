@@ -6,6 +6,6 @@ public class GamePanel : MonoBehaviour
 {
     private void Awake()
     {
-        GenericSinglngton<UIManager>.Instance.gamePanal = gameObject;
+        GenericSinglngton<UIManager>.Instance.gamePanel = gameObject;
     }
 }

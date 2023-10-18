@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerUnit playerUnit { get; set; }
     public GameObject player;
     public BossMob boss;
-    public int stage { get; set; } = 5;
+    public int stage { get; set; } = 1;
     public int score { get; set; } = 0;
 
     public bool isBattel;
@@ -35,12 +35,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+   
         BaseSet();
     }
     void BaseSet()
     {
         enemyList = new List<int>();
-
+    
     }
     public void GameStart()
     {
@@ -81,6 +82,10 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator inBattel() //game 
     {
+        foreach (var enemy in enemyZones)
+        {
+            Debug.Log(enemy.gameObject.transform.position);
+        }
         if (stage % 5 == 0)
         {
             enemyCntD++;
@@ -111,7 +116,7 @@ public class GameManager : MonoBehaviour
             }
             while (enemyList.Count > 0)
             {
-                int ranZone = Random.Range(0, 4);
+                int ranZone = Random.Range(1, 5);
                 GameObject instantenemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
                 Enemy enemy = instantenemy.GetComponent<Enemy>();
                 enemy.target = playerUnit.transform;

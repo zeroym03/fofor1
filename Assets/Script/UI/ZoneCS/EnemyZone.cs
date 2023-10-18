@@ -6,6 +6,5 @@ public class EnemyZone : MonoBehaviour
 {
     void Awake()
     {
-        GenericSinglngton<GameManager>.Instance.enemyZones = GetComponentsInChildren<Transform>();
     }
 }

@@ -96,6 +96,8 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 break;
             case Type.C:
+                if (bullet == null)
+                { bullet = Resources.Load("Item/Missile") as GameObject;}
                 yield return new WaitForSeconds(0.5f);
                 GameObject bulletObject = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidbody = bulletObject.GetComponent<Rigidbody>();

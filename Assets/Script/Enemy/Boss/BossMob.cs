@@ -32,6 +32,7 @@ public class BossMob : Enemy
         {
             StopAllCoroutines();
             animator.SetTrigger("doDie");
+            GenericSinglngton<UIManager>.Instance.WeaponPanel.SetActive(true);
             Destroy(this.gameObject);
             return;
         }
