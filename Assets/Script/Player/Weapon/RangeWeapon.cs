@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class RangeWeapon : Weapon
 {
-    [SerializeField] Transform bulletpos;
+  public Transform bulletpos;
     [SerializeField] Transform bulletCasePos;
-    GameObject bullet;
+   public GameObject bullet { get; set; }
     GameObject bulletCase;
     int _damege = 17;
+    public bool isshot = false;
+    
     private void Awake()
     {
         bullet = Resources.Load("Weapon/HandGun Bullet") as GameObject;
@@ -39,6 +41,5 @@ public class RangeWeapon : Weapon
             bulletCasePos.forward * Random.Range(-3, -2) + Vector3.up * Random.Range(-3, -2);
         CaseRigid.AddForce(casevec, ForceMode.Impulse);
         CaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
-
     }
 }

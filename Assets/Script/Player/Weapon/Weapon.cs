@@ -19,6 +19,4 @@ public class Weapon : MonoBehaviour
     {
         Debug.Log("Null");
     }
-  
-   
 }
