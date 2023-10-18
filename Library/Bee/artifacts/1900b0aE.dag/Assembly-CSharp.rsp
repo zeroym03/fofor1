@@ -384,6 +384,7 @@
 "Assets/Script/UI/ZoneCS/StartZone.cs"
 "Assets/Script/VamserWeapon/HandGunUP.cs"
 "Assets/Script/VamserWeapon/VAMSUI.cs"
+"Assets/Script/VamserWeapon/VAMSWeapon.cs"
 "Assets/Test/PlayerManager_State/Player.cs"
 "Assets/Test/PlayerManager_State/PlayerBase.cs"
 "Assets/Test/PlayerManager_State/PlayerEnemy.cs"

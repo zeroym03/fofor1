@@ -20384,7 +20384,6 @@ MonoBehaviour:
   - {fileID: 226634034875660606}
   - {fileID: 226634034005307672}
   granadeobj: {fileID: 7412157949401285219, guid: d6d0497e18cb8eb4bab39bb4466923ce, type: 3}
-  equipWeapon: {fileID: 0}
 --- !u!114 &-1285852627413552915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20478,7 +20477,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2340801696406085759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9d9bef3f7b55242a52a79c8ae83668, type: 3}
   m_Name: 

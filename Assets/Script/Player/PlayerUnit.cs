@@ -33,14 +33,14 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     bool isDamege = false;
     bool isDead = false;
     bool isReload = false;
-
+    VAMSWeapon vAMSWeapon = null;
     Vector3 moveVec;
     Vector3 DodgeVec;
     PlayerAni playerAni;
     Rigidbody plrigidbody;
     MeshRenderer[] meshes;
     GameObject nearobjeact;
-    public Weapon equipWeapon;
+    public Weapon equipWeapon { get; set; }
     int equipWeaponIndex = -1;
 
     private void Awake()
@@ -247,8 +247,10 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
         {
             equipWeapon.Use();
+            vAMSWeapon.VAMSAttack();
             playerAni.WeaponTypeAttack(equipWeapon);
             fireDelay = 0;
+
         }
     }
     void PlayerMove()
@@ -312,7 +314,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
             equipWeaponIndex = weaponIndex;
             equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
-           Debug.Log( equipWeapon.name);
+             vAMSWeapon = weapons[weaponIndex].GetComponent<HandGunUP>();
             weapons[weaponIndex].SetActive(true);
 
             playerAni.DoSwap();
