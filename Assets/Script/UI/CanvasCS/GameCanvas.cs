@@ -28,7 +28,6 @@ public class GameCanvas : MonoBehaviour
 
     [SerializeField] Text lastScoreText;
 
-    [SerializeField] GameObject WeaponPanel;
 
     float PlayTime;
     int hour;
@@ -40,7 +39,6 @@ public class GameCanvas : MonoBehaviour
         GenericSinglngton<UIManager>.Instance.ItemShopUI = itemShopUI;
         GenericSinglngton<UIManager>.Instance.WeaponShopUI = weaponShopUI;
         GenericSinglngton<UIManager>.Instance.bestScoreText = lastScoreText;
-        GenericSinglngton<UIManager>.Instance.WeaponPanel = WeaponPanel;
     }
 
 

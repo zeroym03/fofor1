@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
@@ -18,8 +19,8 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
         {
             PlayerPrefs.SetInt("MaxScore", 0);
         }
-        canvas = Instantiate(Resources.Load("Canvas") as GameObject);
-
+        canvas = Instantiate(Resources.Load("Canvas/GameCanvas") as GameObject);
+        GenericSinglngton<GameManager>.Instance.BaseSet();
 
         GenericSinglngton<GameManager>.Instance.enemyZones    = Instantiate(Resources.Load("enemyZon") as GameObject).GetComponentsInChildren<Transform>();
         GenericSinglngton<GameManager>.Instance.WeaponShop = Instantiate(Resources.Load("Shop/Weapon Shop") as GameObject);
@@ -30,9 +31,10 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
         Debug.Log(GenericSinglngton<UIManager>.Instance.gameOverPanel);
         GenericSinglngton<UIManager>.Instance.gameOverPanel.SetActive(false);
 
+        Instantiate(Resources.Load("Canvas/WeaponUpCanvas"));
 
 
-        GenericSinglngton<GameManager>.Instance.AddEnemy();
+       GenericSinglngton<GameManager>.Instance.AddEnemy();
     }
 
 }

@@ -102,6 +102,8 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\VamserWeapon\CanvaseItemUpButten.cs" />
+    <Compile Include="Assets\Script\Manager\MonsterMAnager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

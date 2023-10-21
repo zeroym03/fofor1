@@ -10,7 +10,9 @@ enum EPlayerUnit
     Grenade,
     Swap,
     Reload,
+    Dodge,
     Dead,
+    Interation,
 }
 public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 {
@@ -20,11 +22,11 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     [SerializeField] GameObject[] grenades;
     [SerializeField] GameObject granadeobj;
     Camera follwouCamera;
-   public  bool[] hasWeapons { get; set; } = new bool[4];
+    public bool[] hasWeapons { get; set; } = new bool[4];
 
     public int ammo { get; set; } = 100;//프로포티 초기화 필요
     public int coin { get; set; } = 10000;
-    public int health { get; set; } = 300;
+    public int health { get; set; } = 10;
     public int hasGreandes { get; set; } = 0;
     public int maxammo { get; set; } = 300;
     public int maxhealth { get; set; } = 300;
@@ -35,7 +37,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     float fireDelay = 0f;
 
     public bool isShop { get; set; } = false;
-    bool isJump;
     bool isDodge = false;
     bool isSwap = false;
     bool isFireReady = true;
@@ -61,21 +62,36 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     private void Update()
     {
-        if (!isDead)
-        {
-            PlayerMove();
-            FreezeRotatoin();
-            StopToWall();
-            Dodge();
-            playerAni.MoveAnime(moveVec);
-            Attack();
-            Reload();
-            Swap();
-            Interation();
-            Granade();
-        }
-    }
 
+        fireDelay += Time.deltaTime;//attack 타이머
+
+        if (ePlayerUnit == EPlayerUnit.Idle) { ePlayerUnit = EPlayerUnit.Move; }
+        if (ePlayerUnit == EPlayerUnit.Move)
+        {
+            PlayerMove(); StopToWall();
+            playerAni.MoveAnime(moveVec);
+            StateCH();
+        }
+        if (ePlayerUnit == EPlayerUnit.Attack) { Attack(); }
+        if (ePlayerUnit == EPlayerUnit.Swap) { Swap(); }
+        if (ePlayerUnit == EPlayerUnit.Reload) { Reload(); }
+        if (ePlayerUnit == EPlayerUnit.Grenade) { Granade(); }
+        if (ePlayerUnit == EPlayerUnit.Dodge) { Dodge(); }
+        if (ePlayerUnit == EPlayerUnit.Interation) { Interation(); }
+        if (ePlayerUnit == EPlayerUnit.Dead) { OnDie(); }
+
+    }
+    void StateCH()
+    {
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._iDown == true && nearobjeact != null) { ePlayerUnit = EPlayerUnit.Interation; }
+        if ((GenericSinglngton<GetKeyCodeManager>.Instance._sDown1 ||
+         GenericSinglngton<GetKeyCodeManager>.Instance._sDown2 ||
+         GenericSinglngton<GetKeyCodeManager>.Instance._sDown3)) { ePlayerUnit = EPlayerUnit.Swap; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown) { ePlayerUnit = EPlayerUnit.Attack; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._rDown) { ePlayerUnit = EPlayerUnit.Reload; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._gDown) { ePlayerUnit = EPlayerUnit.Grenade; }
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._JumpDown && isDodge == false) { ePlayerUnit = EPlayerUnit.Dodge; }
+    }
     void PlayerGetComponent()
     {
         follwouCamera = GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<Camera>();
@@ -84,7 +100,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         meshes = GetComponentsInChildren<MeshRenderer>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) // 샵에 들어가있냐 무기를 얻을수있냐
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
         {
@@ -92,7 +108,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             Debug.Log(isShop);
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//무기,샵에서 나갔으니 nearobjeact를 널로
     {
         if (other.tag == "Weapon")
         {
@@ -101,12 +117,12 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         else if (other.tag == "Shop")
         {
             //Shop shop = other.gameObject.GetComponent<Shop>();
-           // shop.Exit();
+            // shop.Exit();
             nearobjeact = null;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//아이템에부디치면 그아이템획득,효과발생,적공격이면 데미지입는함수실행
     {
         if (other.tag == "Item")
         {
@@ -115,6 +131,8 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         else if (other.tag == "EnemyBullet")
         {
             DamegeStart(other);
+            Debug.Log("DoDie2");
+
         }
     }
 
@@ -143,6 +161,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
         Destroy(other.gameObject);
     }
+
     void DamegeStart(Collider other)
     {
         if (isDamege == false)
@@ -157,9 +176,10 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     IEnumerator OnDamege(bool isBossAtk)
     {
-        if (health <= 0 && !isDead)
+        if (health <= 0)
         {
-            OnDie();
+            Debug.Log("DoDie1");
+            ePlayerUnit = EPlayerUnit.Dead;
         }
         isDamege = true;
         foreach (MeshRenderer mesh in meshes)
@@ -184,13 +204,14 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     void OnDie()
     {
-        playerAni.DoDie();
-        isDead = true;
-        GenericSinglngton<GameManager>.Instance.GameOver();
-    }
-    void FreezeRotatoin()
-    {
-        plrigidbody.angularVelocity = Vector3.zero;
+        if (isDead == false)
+        {
+            Debug.Log("DoDie");
+            playerAni.DoDie();
+            isDead = true;
+            // ePlayerUnit =EPlayerUnit.Idle;
+            GenericSinglngton<GameManager>.Instance.GameOver();
+        }
     }
     void StopToWall()
     {
@@ -201,8 +222,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     void Granade()
     {
         if (hasGreandes == 0)
-        { return; }
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._gDown && !isReload && !isSwap)
+        { ePlayerUnit = EPlayerUnit.Idle; return; }
         {
             Ray ray = follwouCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -218,19 +238,17 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
                 hasGreandes--;
                 grenades[hasGreandes].SetActive(false);
             }
+            ePlayerUnit = EPlayerUnit.Idle;
         }
     }
     void Reload()
     {
-        if (equipWeapon == null) { return; }
-        if (equipWeapon.type == Weapon.Type.Melee) { return; }
-        if (ammo <= 0) { return; }
-        if (isReload) { return; }
-        if (equipWeapon.curAmmo == equipWeapon.maxAmmo) { return; }
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._rDown && isFireReady && isDodge == false && isSwap == false && isJump == false)
-        {
-            StartCoroutine(ReloadOut());
-        }
+        if (equipWeapon == null) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        if (equipWeapon.type == Weapon.Type.Melee) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        if (ammo <= 0) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        if (isReload) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        if (equipWeapon.curAmmo == equipWeapon.maxAmmo) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        StartCoroutine(ReloadOut());
     }
     IEnumerator ReloadOut()//리로딩 실질시스템
     {
@@ -247,27 +265,28 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
         ammo -= reAmmo;
         isReload = false;
+        ePlayerUnit = EPlayerUnit.Idle;
     }
 
     void Attack()
     {
 
-        if (equipWeapon == null) return;
+        if (equipWeapon == null) { ePlayerUnit = EPlayerUnit.Idle; return; }
         Turn();
-        fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
+        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady)
         {
             equipWeapon.Use();
-            if (vAMSWeapon != null) 
-            vAMSWeapon.VAMSAttack();
+            if (vAMSWeapon != null)
+                vAMSWeapon.VAMSAttack();
             playerAni.WeaponTypeAttack(equipWeapon);
             fireDelay = 0;
-
         }
+        ePlayerUnit = EPlayerUnit.Idle;
     }
     void PlayerMove()
-    {if(isShop == false)
+    {
+        if (isShop == false)
         {
             moveVec = new Vector3(GenericSinglngton<GetKeyCodeManager>.Instance._axisHorx, 0, GenericSinglngton<GetKeyCodeManager>.Instance._axisVerz).normalized;
             if (isDodge == true) { moveVec = DodgeVec; }
@@ -295,14 +314,12 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     void Dodge()
     {
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._JumpDown && moveVec != Vector3.zero && isJump == false && !isSwap&& isDodge == false)
-        {
-            DodgeVec = moveVec;
-            speed *= 2;
-            playerAni.DoDodge();
-            isDodge = true;
-            StartCoroutine(DodgeOut());
-        }
+        DodgeVec = moveVec;
+        speed *= 2;
+        playerAni.DoDodge();
+        isDodge = true;
+        StartCoroutine(DodgeOut());
+        ePlayerUnit = EPlayerUnit.Idle;
     }
     IEnumerator DodgeOut()
     {
@@ -322,50 +339,33 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown2) { weaponIndex = 1; }
         if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown3) { weaponIndex = 2; }
 
-        if ((GenericSinglngton<GetKeyCodeManager>.Instance._sDown1 || GenericSinglngton<GetKeyCodeManager>.Instance._sDown2 || GenericSinglngton<GetKeyCodeManager>.Instance._sDown3)  && isDodge == false)//
-        {
-            if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
-            equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
-             vAMSWeapon = weapons[weaponIndex].GetComponent<HandGunUP>();
-            weapons[weaponIndex].SetActive(true);
 
-            playerAni.DoSwap();
-            isSwap = true;
-            StartCoroutine(SwapOut());
-        }
-    }
-    IEnumerator SwapOut()
-    {
-        yield return new WaitForSeconds(1);
-        isSwap = false;
+        if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
+        equipWeaponIndex = weaponIndex;
+        equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+        vAMSWeapon = weapons[weaponIndex].GetComponent<HandGunUP>();
+        weapons[weaponIndex].SetActive(true);
+
+        playerAni.DoSwap();
+        ePlayerUnit = EPlayerUnit.Idle;
     }
     void Interation()
     {
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._iDown == true && nearobjeact != null && isJump == false && isDodge == false)
+        if (nearobjeact.tag == "Weapon")
         {
-            if (nearobjeact.tag == "Weapon")
-            {
-                Item item = nearobjeact.GetComponent<Item>();
-                int weaponindex = item.value;
-                Debug.Log(item.value);
-                hasWeapons[weaponindex] = true;
-                Destroy(nearobjeact);
+            Item item = nearobjeact.GetComponent<Item>();
+            int weaponindex = item.value;
+            Debug.Log(item.value);
+            hasWeapons[weaponindex] = true;
+            Destroy(nearobjeact);
 
-            }
-            else if (nearobjeact.tag == "Shop")
-            {
-                Shop shop = nearobjeact.GetComponent<Shop>();
-                shop.Enter(this);
-                //isShop = false;
-                nearobjeact = null;
-            }
         }
+        else if (nearobjeact.tag == "Shop")
+        {
+            Shop shop = nearobjeact.GetComponent<Shop>();
+            shop.Enter(this);
+            nearobjeact = null;
+        }
+        ePlayerUnit = EPlayerUnit.Move;
     }
 }
-
-
-//Quaternion deltaRot = Quaternion.Euler(Vector3.up * SpinSpeed * Time.deltaTime));
-//Vector3 deltaPos = transform.forward * MoveSpeed * Time.deltaTime;
-//rb.MoveRotation(rb.rotation * deltaRot);
-//rb.MovePosition(transform.position + deltaPos);
