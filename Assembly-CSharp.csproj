@@ -58,11 +58,13 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerUnit.cs" />
+    <Compile Include="Assets\Script\Manager\MonsterManager.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\GamePanel.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\MenuPanel.cs" />
     <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy1.cs" />
     <Compile Include="Assets\Script\Player\Weapon\GunWeapon.cs" />
     <Compile Include="Assets\Test\PlayerManager_State\PlayerState.cs" />
+    <Compile Include="Assets\Script\VamserWeapon\CanvaseItemUpButten.cs" />
     <Compile Include="Assets\Script\Player\Grenade.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\MenuScoreText.cs" />
     <Compile Include="Assets\Script\Player\Orbit.cs" />
@@ -102,8 +104,6 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\VamserWeapon\CanvaseItemUpButten.cs" />
-    <Compile Include="Assets\Script\Manager\MonsterMAnager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

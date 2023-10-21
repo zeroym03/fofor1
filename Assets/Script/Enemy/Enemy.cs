@@ -180,16 +180,16 @@ public class Enemy : MonoBehaviour
             switch (type)
             {
                 case Type.A:
-                    GenericSinglngton<GameManager>.Instance.enemyCntA--;
+                    GenericSinglngton<MonsterManager>.Instance.enemyCntA--;
                     break;
                 case Type.B:
-                    GenericSinglngton<GameManager>.Instance.enemyCntB--;
+                    GenericSinglngton<MonsterManager>.Instance.enemyCntB--;
                     break;
                 case Type.C:
-                    GenericSinglngton<GameManager>.Instance.enemyCntC--;
+                    GenericSinglngton<MonsterManager>.Instance.enemyCntC--;
                     break;
                 case Type.D:
-                    GenericSinglngton<GameManager>.Instance.enemyCntD--;
+                    GenericSinglngton<MonsterManager>.Instance.enemyCntD--;
                     break;
             }
             if (isgranade)

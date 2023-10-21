@@ -92,9 +92,9 @@ public class GameCanvas : MonoBehaviour
     }//GameMain
     void EnemyTextCH()
     {
-        enumyAText.text = GenericSinglngton<GameManager>.Instance.enemyCntA.ToString();
-        enumyBText.text = GenericSinglngton<GameManager>.Instance.enemyCntB.ToString();
-        enumyCText.text = GenericSinglngton<GameManager>.Instance.enemyCntC.ToString();
+        enumyAText.text = GenericSinglngton<MonsterManager>.Instance.enemyCntA.ToString();
+        enumyBText.text = GenericSinglngton<MonsterManager>.Instance.enemyCntB.ToString();
+        enumyCText.text = GenericSinglngton<MonsterManager>.Instance.enemyCntC.ToString();
 
     }//GameMain
     void weaponImage()

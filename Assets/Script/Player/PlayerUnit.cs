@@ -36,7 +36,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 
     float fireDelay = 0f;
 
-    public bool isShop { get; set; } = false;
+    //  public bool isShop { get; set; } = false;
     bool isDodge = false;
     bool isSwap = false;
     bool isFireReady = true;
@@ -45,9 +45,10 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     bool isDead = false;
     bool isReload = false;
     EPlayerUnit ePlayerUnit = EPlayerUnit.Idle;
-    VAMSWeapon vAMSWeapon = null;
     Vector3 moveVec;
     Vector3 DodgeVec;
+
+    VAMSWeapon vAMSWeapon = null;
     PlayerAni playerAni;
     Rigidbody plrigidbody;
     MeshRenderer[] meshes;
@@ -62,7 +63,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     }
     private void Update()
     {
-
+        Debug.Log(ePlayerUnit);
         fireDelay += Time.deltaTime;//attack 타이머
 
         if (ePlayerUnit == EPlayerUnit.Idle) { ePlayerUnit = EPlayerUnit.Move; }
@@ -105,7 +106,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (other.tag == "Weapon" || other.tag == "Shop")
         {
             nearobjeact = other.gameObject;
-            Debug.Log(isShop);
         }
     }
     private void OnTriggerExit(Collider other)//무기,샵에서 나갔으니 nearobjeact를 널로
@@ -246,14 +246,14 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (equipWeapon == null) { ePlayerUnit = EPlayerUnit.Idle; return; }
         if (equipWeapon.type == Weapon.Type.Melee) { ePlayerUnit = EPlayerUnit.Idle; return; }
         if (ammo <= 0) { ePlayerUnit = EPlayerUnit.Idle; return; }
-        if (isReload) { ePlayerUnit = EPlayerUnit.Idle; return; }
+        if (isReload) {  return; }
         if (equipWeapon.curAmmo == equipWeapon.maxAmmo) { ePlayerUnit = EPlayerUnit.Idle; return; }
         StartCoroutine(ReloadOut());
     }
     IEnumerator ReloadOut()//리로딩 실질시스템
     {
         playerAni.DoReload();
-        isReload = true;
+        //isReload = true;
         yield return new WaitForSeconds(1f);
         int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
 
@@ -264,7 +264,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             equipWeapon.curAmmo = equipWeapon.maxAmmo;
         }
         ammo -= reAmmo;
-        isReload = false;
+     //   isReload = false;
         ePlayerUnit = EPlayerUnit.Idle;
     }
 
@@ -272,29 +272,29 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     {
 
         if (equipWeapon == null) { ePlayerUnit = EPlayerUnit.Idle; return; }
-        Turn();
         isFireReady = equipWeapon.rate < fireDelay;
-        if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady)
+        if ( isFireReady)
         {
+        Turn();
             equipWeapon.Use();
             if (vAMSWeapon != null)
                 vAMSWeapon.VAMSAttack();
             playerAni.WeaponTypeAttack(equipWeapon);
             fireDelay = 0;
+            ePlayerUnit = EPlayerUnit.Idle;
         }
-        ePlayerUnit = EPlayerUnit.Idle;
     }
     void PlayerMove()
     {
-        if (isShop == false)
-        {
-            moveVec = new Vector3(GenericSinglngton<GetKeyCodeManager>.Instance._axisHorx, 0, GenericSinglngton<GetKeyCodeManager>.Instance._axisVerz).normalized;
-            if (isDodge == true) { moveVec = DodgeVec; }
-            if (isSwap == true || isReload || isFireReady == false) { moveVec = Vector3.zero; }
-            if (isBorder == false) { transform.position += moveVec * speed * Time.deltaTime; }
+        moveVec = new Vector3(GenericSinglngton<GetKeyCodeManager>.Instance._axisHorx, 0, GenericSinglngton<GetKeyCodeManager>.Instance._axisVerz).normalized;
+        if (isDodge == true) { moveVec = DodgeVec; }
+        //if (isSwap == true //||// isReload 
+        //    || isFireReady == false) 
+        //{ moveVec = Vector3.zero; } // 멈추는이유는모르지만 이쪾이문제
+        if (isBorder == false) 
+        { transform.position += moveVec * speed * Time.deltaTime; }
 
-            Turn();
-        }
+        Turn();
     }
     void Turn()
     {

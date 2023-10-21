@@ -17,14 +17,14 @@ public class Shop : MonoBehaviour
     public void Enter(PlayerUnit playerMob)
     {
         enterPlayer = playerMob;
-        enterPlayer.isShop = true;
+       // enterPlayer.isShop = true;
         UIGroup.anchoredPosition = Vector3.zero;
     }
     public void Exit()
     {
         UIGroup.anchoredPosition = Vector3.down * 1000;
         animator.SetTrigger("doHello");
-        enterPlayer.isShop = false;
+       // enterPlayer.isShop = false;
     }
     public void ItemBuy(int index)
     {

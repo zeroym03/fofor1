@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class CanvaseItemUpButten : MonoBehaviour
 {
-
+   public void WeaponUp()
+    {
+        
+    }
 }
