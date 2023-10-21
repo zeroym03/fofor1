@@ -69,11 +69,11 @@ public class GameCanvas : MonoBehaviour
     void CurrentScoreText()
     {
         currentScoreText.text = GenericSinglngton<GameManager>.Instance.score.ToString();
-    }
+    }//GameMain
     void StageText()
     {
         GenericSinglngton<UIManager>.Instance.TextCH(currentStageText, "스테이지 : " + GenericSinglngton<GameManager>.Instance.stage.ToString());
-    }
+    }//GameMain
     void playTimeTextCH()
     {
         hour = (int)(PlayTime / 3600);
@@ -83,22 +83,22 @@ public class GameCanvas : MonoBehaviour
                 string.Format("{0:00}", hour) + ":" +
                 string.Format("{0:00}", Min) + ":" +
                 string.Format("{0:00}", second);
-    }
+    }//GameMain
     void PlayerHPText()
     {
         currentHpText.text = GenericSinglngton<GameManager>.Instance.playerUnit.health + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.maxhealth;
-    }
+    }//GameMain
     void CurrentCoinText()
     {
         currentCoinText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.playerUnit.coin);
-    }
+    }//GameMain
     void EnemyTextCH()
     {
         enumyAText.text = GenericSinglngton<GameManager>.Instance.enemyCntA.ToString();
         enumyBText.text = GenericSinglngton<GameManager>.Instance.enemyCntB.ToString();
         enumyCText.text = GenericSinglngton<GameManager>.Instance.enemyCntC.ToString();
 
-    }
+    }//GameMain
     void weaponImage()
     {
         if (GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon == null)
@@ -118,7 +118,7 @@ public class GameCanvas : MonoBehaviour
         machineGunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[2] ? 1 : 0);
         controlRImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasGreandes > 0 ? 1 : 0);
 
-    }
+    }//GameMain
     void BossHPBarCH()
     {
         if (GenericSinglngton<GameManager>.Instance.boss != null)
@@ -129,7 +129,6 @@ public class GameCanvas : MonoBehaviour
         else
         {
             bossHPGroup.anchoredPosition = Vector3.up * 200;
-
         }
-    }
+    }//GameMain
 }

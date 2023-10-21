@@ -4966,8 +4966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62210b31ddbe5845be4b576da6faff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  talkText: {fileID: 0}
+  animator: {fileID: 8898396397519011112}
   itemPrice: 64000000b80b000088130000
   itemPos:
   - {fileID: 8898396397273254828}

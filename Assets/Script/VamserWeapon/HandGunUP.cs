@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HandGunUP : VAMSWeapon
 {
-    RangeWeapon rangeWeapon;
+    HandGun rangeWeapon;
     void Start()
     {
-        rangeWeapon =  GetComponent<RangeWeapon>();
+        rangeWeapon =  GetComponent<HandGun>();
     }
 
     public override void VAMSAttack()

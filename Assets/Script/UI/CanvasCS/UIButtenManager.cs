@@ -26,5 +26,6 @@ public class UIButtenManager : MonoBehaviour
     {
         rectTransform.position = Vector3.down *1000;
         GenericSinglngton<GameManager>.Instance.playerUnit.isShop = false;
+        GenericSinglngton<GameManager>.Instance._itemShop.Exit();
     }
 }

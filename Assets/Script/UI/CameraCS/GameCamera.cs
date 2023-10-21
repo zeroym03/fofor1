@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameCamera : MonoBehaviour
 {
-  public  Transform target { get; set; }
+    Transform target = null;
      Vector3 offest;
     public void Set()
     {

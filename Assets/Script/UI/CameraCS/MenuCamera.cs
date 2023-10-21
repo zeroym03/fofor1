@@ -8,5 +8,4 @@ public class MenuCamera : MonoBehaviour
     {
         GenericSinglngton<UIManager>.Instance.menuCam = gameObject;
     }
-
 }

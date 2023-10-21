@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     PlayerUnit enterPlayer;
-
-
     public RectTransform UIGroup { get; set; }
     [SerializeField] Animator animator;
-    public Text talkText;
-    public int[] itemPrice;
+    public Text talkText { get; set; }
+    public int[] itemPrice;//
     public Transform[] itemPos;
     public GameObject[] itemObj;
     public string[] talkData;

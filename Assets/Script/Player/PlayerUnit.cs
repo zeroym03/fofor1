@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum EPlayerUnit
+{
+    Idle,
+    Move,
+    Attack,
+    Grenade,
+    Swap,
+    Reload,
+    Dead,
+}
 public class PlayerUnit : MonoBehaviour  //상속 오버라이드
 {
     //스탯은 다른클래스로 
@@ -33,6 +43,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     bool isDamege = false;
     bool isDead = false;
     bool isReload = false;
+    EPlayerUnit ePlayerUnit = EPlayerUnit.Idle;
     VAMSWeapon vAMSWeapon = null;
     Vector3 moveVec;
     Vector3 DodgeVec;
@@ -89,8 +100,8 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
         else if (other.tag == "Shop")
         {
-            Shop shop = other.gameObject.GetComponent<Shop>();
-            shop.Exit();
+            //Shop shop = other.gameObject.GetComponent<Shop>();
+           // shop.Exit();
             nearobjeact = null;
         }
     }
@@ -106,6 +117,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             DamegeStart(other);
         }
     }
+
     void PlayerByItem(Collider other)
     {
         Item item = other.GetComponent<Item>();
@@ -247,6 +259,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (GenericSinglngton<GetKeyCodeManager>.Instance._fDown && isFireReady && isDodge == false && isSwap == false && !isShop)
         {
             equipWeapon.Use();
+            if (vAMSWeapon != null) 
             vAMSWeapon.VAMSAttack();
             playerAni.WeaponTypeAttack(equipWeapon);
             fireDelay = 0;
