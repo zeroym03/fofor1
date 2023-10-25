@@ -21,7 +21,6 @@ public class PlayerAni : MonoBehaviour
   public  void MoveAnime(Vector3 moveVec)
     {
         animator.SetBool("isRun", moveVec != Vector3.zero);
-        animator.SetBool("isWalk", GenericSinglngton<GetKeyCodeManager>.Instance._walkDown);
     }
     public void WeaponTypeAttack(Weapon equipWeapon)
     {

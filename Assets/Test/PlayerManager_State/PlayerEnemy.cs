@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEnemy : PlayerBase
 {
-    PlayerState state;
+    PlayerCur state;
 
     public override void InitPlayer(string uid)
     {        
@@ -12,8 +12,8 @@ public class PlayerEnemy : PlayerBase
         Type = PlayerType.Enemy;
         //print("Enemy InitPlayer()");
 
-        state = GetComponent<PlayerState>();
-        state.State_start(PlayerState.eState.idle);
+        state = GetComponent<PlayerCur>();
+        state.State_start(PlayerCur.eState.idle);
         state.target = GenericSinglngton<PlayerManager>.Instance.Hero.gameObject;                
     }
 

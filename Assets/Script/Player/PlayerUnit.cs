@@ -74,7 +74,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
             StateCH();
         }
         if (ePlayerUnit == EPlayerUnit.Attack) { Attack(); }
-        if (ePlayerUnit == EPlayerUnit.Swap) { Swap(); }
+       if (ePlayerUnit == EPlayerUnit.Swap) { Swap(); }
         if (ePlayerUnit == EPlayerUnit.Reload) { Reload(); }
         if (ePlayerUnit == EPlayerUnit.Grenade) { Granade(); }
         if (ePlayerUnit == EPlayerUnit.Dodge) { Dodge(); }
@@ -309,6 +309,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
                 transform.LookAt(transform.position + nex);
             }
         }
+        if(GenericSinglngton<GetKeyCodeManager>.Instance._fDown == false)
         transform.LookAt(transform.position + moveVec);
     }
 
@@ -327,8 +328,10 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         speed *= 0.5f;
         isDodge = false;
     }
-    int weaponIndex = -1;
 
+
+
+    int weaponIndex = -1;
     void Swap()
     {
         if (GenericSinglngton<GetKeyCodeManager>.Instance._sDown1 && (hasWeapons[0] == false || equipWeaponIndex == 0)) { return; }
@@ -343,7 +346,14 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         if (equipWeapon != null) { equipWeapon.gameObject.SetActive(false); }
         equipWeaponIndex = weaponIndex;
         equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
-        vAMSWeapon = weapons[weaponIndex].GetComponent<HandGunUP>();
+        if (weapons[weaponIndex].GetComponent<HandGunUP>() != null)
+        {
+            vAMSWeapon = weapons[weaponIndex].GetComponent<HandGunUP>();
+        }
+        else if (weapons[weaponIndex].GetComponent<HandGunUP>() == null)
+        {
+            vAMSWeapon = null;
+        }
         weapons[weaponIndex].SetActive(true);
 
         playerAni.DoSwap();

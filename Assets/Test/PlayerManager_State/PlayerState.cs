@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour   // Player AI - FSM
+public class PlayerCur : MonoBehaviour   // Player AI - FSM
 {
     public GameObject target;
 
