@@ -75,6 +75,8 @@
     <Compile Include="Assets\Script\VamserWeapon\VAMSWeapon.cs" />
     <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy.cs" />
     <Compile Include="Assets\Script\Manager\GetKeyCodeManager.cs" />
+    <Compile Include="Assets\Script\Player\TestPlayer\PlayerUnitData.cs" />
+    <Compile Include="Assets\Script\Player\TestPlayer\PlayerTestUnit.cs" />
     <Compile Include="Assets\Script\Player\Weapon\MeleeWeapon.cs" />
     <Compile Include="Assets\Test\PlayerManager_State\PlayerBase.cs" />
     <Compile Include="Assets\Script\UI\CameraCS\GameCamera.cs" />
@@ -94,9 +96,11 @@
     <Compile Include="Assets\Script\System\Missile.cs" />
     <Compile Include="Assets\Script\UI\ZoneCS\StartZone.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\GameCanvas.cs" />
+    <Compile Include="Assets\Script\Player\TestPlayer\PlayerCur.cs" />
     <Compile Include="Assets\Script\Shop\WeaponShopText.cs" />
     <Compile Include="Assets\Script\Manager\GenericSinglngton.cs" />
     <Compile Include="Assets\Script\Player\Item.cs" />
+    <Compile Include="Assets\Script\Player\TestPlayer\Unit.cs" />
     <Compile Include="Assets\QuarterView 3D Action BE5\ReadMe\Scripts\ReadmeBE5.cs" />
     <Compile Include="Assets\Script\Player\Weapon\Weapon.cs" />
     <Compile Include="Assets\Script\VamserWeapon\VAMSUI.cs" />
@@ -104,10 +108,6 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Player\TestPlayer\PlayerUnitData.cs" />
-    <Compile Include="Assets\Script\Player\TestPlayer\PlayerCur.cs" />
-    <Compile Include="Assets\Script\Player\TestPlayer\Unit.cs" />
-    <Compile Include="Assets\Script\Player\TestPlayer\PlayerTestUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
