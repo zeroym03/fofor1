@@ -18,6 +18,9 @@ public class PlayerUnitData : MonoBehaviour
     public int hasGreandes { get; set; } = 0;
     public int maxammo { get; set; } = 300;
     public int maxhealth { get; set; } = 300;
+    public int equipWeaponIndex { get; set; } = -1;
+    public int weaponIndex { get; set; } = -1;
+
     public int maxcoin = int.MaxValue;
     public int maxhasGreandes = 4;
 
@@ -32,6 +35,7 @@ public class PlayerUnitData : MonoBehaviour
     public bool isDamege { get; set; } = false;
     public bool isDead { get; set; } = false;
     public bool isReload { get; set; } = false;
+
     public Vector3 moveVec { get; set; }
     public Vector3 DodgeVec { get; set; }
 
@@ -41,7 +45,6 @@ public class PlayerUnitData : MonoBehaviour
     public MeshRenderer[] meshes { get; set; }
     public GameObject nearobjeact { get; set; }
     public Weapon equipWeapon { get; set; }
-    public int equipWeaponIndex { get; set; } = -1;
-   public int weaponIndex { get; set; } = -1;
+
 
 }

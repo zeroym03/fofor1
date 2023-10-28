@@ -5,16 +5,18 @@ using UnityEngine.XR;
 
 public class PlayerTestUnit : MonoBehaviour
 {
-   public  PlayerMoveState playerMoveState;
-    public PlayerDodgeState playerDodgeState;
-    public InterationState interationState;
-    public AttackState attackState;
-    public SwapState swapState;
-   public ReloadState ReloadState;
-   public DieState dieState;
+    public PlayerMoveState playerMoveState { get; } = new PlayerMoveState();
+    public PlayerDodgeState playerDodgeState { get; } = new PlayerDodgeState();
+    public InterationState interationState { get; } = new InterationState();
+    public AttackState attackState { get; } = new AttackState();
+    public SwapState swapState { get; } = new SwapState();
+    public ReloadState ReloadState { get; } = new ReloadState();
+    public DieState dieState { get; } = new DieState();
+
+
     PlayerState playerState;
     public PlayerAni playerAni { get; set; }
-    public PlayerUnitData unitData { get; set; }
+     PlayerUnitData unitData { get; set; }
     private void Awake()
     {
         playerAni = GetComponent<PlayerAni>();
@@ -22,7 +24,7 @@ public class PlayerTestUnit : MonoBehaviour
     }
     private void Start()
     {
-        SetState(new PlayerMoveState());
+        SetState(playerMoveState);
     }
     private void Update()
     {
@@ -34,15 +36,7 @@ public class PlayerTestUnit : MonoBehaviour
     {
         playerState = state;
         playerState.StateStart(this);
-        if (playerMoveState == null) { playerMoveState = new PlayerMoveState(); }
-        if (playerDodgeState == null) playerDodgeState = new PlayerDodgeState();
-        if (interationState == null) interationState = new InterationState();
-        if (attackState == null) attackState = new AttackState();
-        if (swapState == null) swapState = new SwapState();
-        if (ReloadState == null) ReloadState = new ReloadState ();
-        if (dieState == null) dieState = new DieState();
     }
-
     private void OnTriggerStay(Collider other) // 샵에 들어가있냐 무기를 얻을수있냐
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
@@ -60,7 +54,7 @@ public class PlayerTestUnit : MonoBehaviour
         {
             //Shop shop = other.gameObject.GetComponent<Shop>();
             // shop.Exit();
-            unitData. nearobjeact = null;
+            unitData.nearobjeact = null;
         }
     }
 
@@ -96,7 +90,7 @@ public class PlayerTestUnit : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) == false)
             transform.LookAt(transform.position + unitData.moveVec);
     }//Move
-  
+
     public void Dodge()//Dodge
     {
         unitData.speed *= 2;
@@ -112,11 +106,12 @@ public class PlayerTestUnit : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         unitData.speed *= 0.5f;
+        if(unitData.isDead == false)
         SetState(playerMoveState); // 매번 new 를 안해야 좋을거같은데 어떻게 해야할까
     }
     public void Interation()
     {
-         if(unitData.nearobjeact == null) { SetState(playerMoveState);return; }
+        if (unitData.nearobjeact == null) { SetState(playerMoveState); return; }
         if (unitData.nearobjeact.tag == "Weapon")
         {
             Item item = unitData.nearobjeact.GetComponent<Item>();
@@ -168,7 +163,7 @@ public class PlayerTestUnit : MonoBehaviour
     public void Attack()
     {
 
-        if (unitData.equipWeapon == null) { SetState(playerMoveState);  return; }
+        if (unitData.equipWeapon == null) { SetState(playerMoveState); return; }
         unitData.isFireReady = unitData.equipWeapon.rate < unitData.fireDelay;
         if (unitData.isFireReady)
         {
@@ -179,15 +174,15 @@ public class PlayerTestUnit : MonoBehaviour
             playerAni.WeaponTypeAttack(unitData.equipWeapon);
             unitData.fireDelay = 0;
         }
-      if(Input.GetKeyUp(KeyCode.Mouse0))  SetState(playerMoveState);
+        if (Input.GetKeyUp(KeyCode.Mouse0)) SetState(playerMoveState);
     }
-   public void Reload()
+    public void Reload()
     {
         if (unitData.equipWeapon == null) { SetState(playerMoveState); return; }
         if (unitData.equipWeapon.type == Weapon.Type.Melee) { SetState(playerMoveState); return; }
         if (unitData.ammo <= 0) { SetState(playerMoveState); return; }
         if (unitData.isReload) { SetState(playerMoveState); return; }
-        if (unitData.equipWeapon.curAmmo == unitData.equipWeapon.maxAmmo) {  SetState(playerMoveState); return; }
+        if (unitData.equipWeapon.curAmmo == unitData.equipWeapon.maxAmmo) { SetState(playerMoveState); return; }
         StartCoroutine(ReloadOut());
     }
     IEnumerator ReloadOut()//리로딩 실질시스템
@@ -206,21 +201,20 @@ public class PlayerTestUnit : MonoBehaviour
         unitData.ammo -= reAmmo;
         SetState(playerMoveState);
     }
-    private void OnTriggerEnter(Collider other)//아이템에부디치면 그아이템획득,효과발생,적공격이면 데미지입는함수실행
+    private void OnTriggerEnter(Collider other)//아이템에 부딛치면 그아이템획득,효과발생,적공격이면 데미지입는함수실행
     {
         if (other.tag == "Item")
         {
-                 PlayerByItem(other);
+            PlayerByItem(other);
         }
         else if (other.tag == "EnemyBullet")
         {
-                  DamegeStart(other);
-            Debug.Log("DoDie2");
+            DamegeStart(other);
         }
     }
     void DamegeStart(Collider other)
     {
-        if (unitData.isDamege == false)
+        if (unitData.isDamege == false )
         {
             Debug.Log("EnemyBullet");
             Bullet enemyBullet = other.GetComponent<Bullet>();
@@ -235,7 +229,6 @@ public class PlayerTestUnit : MonoBehaviour
     {
         if (unitData.health <= 0)
         {
-            Debug.Log("DoDie1");
             SetState(dieState);
         }
         unitData.isDamege = true;
@@ -259,17 +252,16 @@ public class PlayerTestUnit : MonoBehaviour
         }
 
     }
- public   void OnDie()
+    public void OnDie()
     {
         if (unitData.isDead == false)
         {
-            Debug.Log("DoDie");
             playerAni.DoDie();
             unitData.isDead = true;
             GenericSinglngton<GameManager>.Instance.GameOver();
         }
     }
-    void PlayerByItem(Collider other)
+   public void PlayerByItem(Collider other)
     {
         Item item = other.GetComponent<Item>();
         switch (item.type)
@@ -293,5 +285,32 @@ public class PlayerTestUnit : MonoBehaviour
                 break;
         }
         Destroy(other.gameObject);
+    }
+   public void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
+        unitData.isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+  public  void Granade()
+    {
+        if (unitData.hasGreandes == 0)
+        { SetState(playerMoveState); return; }
+        {
+            Ray ray = unitData.follwouCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Vector3 nextvec = hit.point - transform.position;
+                nextvec.y = 13;
+                GameObject instantGranade = Instantiate(unitData.granadeobj, transform.position, transform.rotation);
+                Rigidbody rigidGranade = instantGranade.GetComponent<Rigidbody>();
+                rigidGranade.AddForce(nextvec, ForceMode.Impulse);
+                rigidGranade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+
+                unitData.hasGreandes--;
+                unitData.grenades[unitData.hasGreandes].SetActive(false);
+            }
+            SetState(playerMoveState);
+        }
     }
 }

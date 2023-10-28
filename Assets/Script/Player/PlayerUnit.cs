@@ -24,7 +24,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
     Camera follwouCamera;
     public bool[] hasWeapons { get; set; } = new bool[4];
 
-    public int ammo { get; set; } = 100;//프로포티 초기화 필요
+    public int ammo { get; set; } = 100;
     public int coin { get; set; } = 10000;
     public int health { get; set; } = 10;
     public int hasGreandes { get; set; } = 0;

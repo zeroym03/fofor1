@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class PlayerState
 {
@@ -18,6 +17,7 @@ public class PlayerMoveState : PlayerState
     {
         player.PlayerMove();
         StateSetMove();
+        player.StopToWall();
     }
     public void StateSetMove()
     {
@@ -38,6 +38,7 @@ public class PlayerDodgeState : PlayerState
     {
         base.StateStart(playerUnit);
         player.Dodge();
+        player.StopToWall();
     }
     public override void StateUpDate()
     {
@@ -79,18 +80,15 @@ public class ReloadState : PlayerState
         player.Reload();
     }
 }
-public class ByItemState : PlayerState
-{
-    public override void StateStart(PlayerTestUnit playerUnit)
-    {
-        base.StateStart(playerUnit);
-    }
-}
 public class DieState : PlayerState
 {
     public override void StateStart(PlayerTestUnit playerUnit)
     {
         base.StateStart(playerUnit);
         player.OnDie();
+    }
+    public override void StateUpDate()
+    {
+        player.SetState(player.dieState);
     }
 }
