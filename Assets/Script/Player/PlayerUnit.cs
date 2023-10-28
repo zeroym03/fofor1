@@ -132,7 +132,6 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         {
             DamegeStart(other);
             Debug.Log("DoDie2");
-
         }
     }
 

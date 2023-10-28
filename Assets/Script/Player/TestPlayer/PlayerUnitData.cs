@@ -42,5 +42,6 @@ public class PlayerUnitData : MonoBehaviour
     public GameObject nearobjeact { get; set; }
     public Weapon equipWeapon { get; set; }
     public int equipWeaponIndex { get; set; } = -1;
+   public int weaponIndex { get; set; } = -1;
 
 }
