@@ -12,15 +12,17 @@ public class PlayerTestUnit : MonoBehaviour
     public SwapState swapState { get; } = new SwapState();
     public ReloadState ReloadState { get; } = new ReloadState();
     public DieState dieState { get; } = new DieState();
+    public GranadeState granadeState { get; } = new GranadeState();
 
 
     PlayerState playerState;
     public PlayerAni playerAni { get; set; }
-     PlayerUnitData unitData { get; set; }
+    PlayerUnitData unitData { get; set; }
     private void Awake()
     {
         playerAni = GetComponent<PlayerAni>();
         unitData = GetComponent<PlayerUnitData>();
+        unitData.follwouCamera = GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<Camera>();
     }
     private void Start()
     {
@@ -56,6 +58,57 @@ public class PlayerTestUnit : MonoBehaviour
             // shop.Exit();
             unitData.nearobjeact = null;
         }
+    }
+    private void OnTriggerEnter(Collider other)//아이템에 부딛치면 그아이템획득,효과발생,적공격이면 데미지입는함수실행
+    {
+        if (other.tag == "Item")
+        {
+            PlayerByItem(other);//
+        }
+        else if (other.tag == "EnemyBullet")
+        {
+            DamegeStart(other);// 우야냐
+        }
+    }
+    void DamegeStart(Collider other)
+    {
+        if (unitData.isDamege == false)
+        {
+            Debug.Log("EnemyBullet");
+            Bullet enemyBullet = other.GetComponent<Bullet>();
+            unitData.health -= enemyBullet.damage;
+            bool isBossAtk = other.name == "Boss Melee Alea";
+            Debug.Log(isBossAtk);
+            StartCoroutine(OnDamege(isBossAtk));
+        }
+        if (other.GetComponent<Rigidbody>() != null) { Destroy(other.gameObject); }
+    }
+    IEnumerator OnDamege(bool isBossAtk)
+    {
+        if (unitData.health <= 0)
+        {
+            SetState(dieState);
+        }
+        unitData.isDamege = true;
+        foreach (MeshRenderer mesh in unitData.meshes)
+        {
+            mesh.material.color = Color.red;
+        }
+        if (isBossAtk)
+        {
+            unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse);
+        }
+        yield return new WaitForSeconds(1);
+        foreach (MeshRenderer mesh in unitData.meshes)
+        {
+            mesh.material.color = Color.white;
+        }
+        unitData.isDamege = false;
+        if (isBossAtk)
+        {
+            unitData.plrigidbody.velocity = Vector3.zero;
+        }
+
     }
 
     public void DestroyGMOB(GameObject gameObject)
@@ -106,8 +159,8 @@ public class PlayerTestUnit : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         unitData.speed *= 0.5f;
-        if(unitData.isDead == false)
-        SetState(playerMoveState); // 매번 new 를 안해야 좋을거같은데 어떻게 해야할까
+        if (unitData.isDead == false)
+            SetState(playerMoveState); // 매번 new 를 안해야 좋을거같은데 어떻게 해야할까
     }
     public void Interation()
     {
@@ -122,7 +175,7 @@ public class PlayerTestUnit : MonoBehaviour
         else if (unitData.nearobjeact.tag == "Shop")
         {
             Shop shop = unitData.nearobjeact.GetComponent<Shop>();
-            //shop.Enter(this);
+            shop.Enter(this);
             unitData.nearobjeact = null;
         }
         SetState(playerMoveState);
@@ -201,57 +254,7 @@ public class PlayerTestUnit : MonoBehaviour
         unitData.ammo -= reAmmo;
         SetState(playerMoveState);
     }
-    private void OnTriggerEnter(Collider other)//아이템에 부딛치면 그아이템획득,효과발생,적공격이면 데미지입는함수실행
-    {
-        if (other.tag == "Item")
-        {
-            PlayerByItem(other);
-        }
-        else if (other.tag == "EnemyBullet")
-        {
-            DamegeStart(other);
-        }
-    }
-    void DamegeStart(Collider other)
-    {
-        if (unitData.isDamege == false )
-        {
-            Debug.Log("EnemyBullet");
-            Bullet enemyBullet = other.GetComponent<Bullet>();
-            unitData.health -= enemyBullet.damage;
-            bool isBossAtk = other.name == "Boss Melee Alea";
-            Debug.Log(isBossAtk);
-            StartCoroutine(OnDamege(isBossAtk));
-        }
-        if (other.GetComponent<Rigidbody>() != null) { Destroy(other.gameObject); }
-    }
-    IEnumerator OnDamege(bool isBossAtk)
-    {
-        if (unitData.health <= 0)
-        {
-            SetState(dieState);
-        }
-        unitData.isDamege = true;
-        foreach (MeshRenderer mesh in unitData.meshes)
-        {
-            mesh.material.color = Color.red;
-        }
-        if (isBossAtk)
-        {
-            unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse);
-        }
-        yield return new WaitForSeconds(1);
-        foreach (MeshRenderer mesh in unitData.meshes)
-        {
-            mesh.material.color = Color.white;
-        }
-        unitData.isDamege = false;
-        if (isBossAtk)
-        {
-            unitData.plrigidbody.velocity = Vector3.zero;
-        }
 
-    }
     public void OnDie()
     {
         if (unitData.isDead == false)
@@ -261,7 +264,7 @@ public class PlayerTestUnit : MonoBehaviour
             GenericSinglngton<GameManager>.Instance.GameOver();
         }
     }
-   public void PlayerByItem(Collider other)
+    public void PlayerByItem(Collider other)
     {
         Item item = other.GetComponent<Item>();
         switch (item.type)
@@ -286,31 +289,30 @@ public class PlayerTestUnit : MonoBehaviour
         }
         Destroy(other.gameObject);
     }
-   public void StopToWall()
+    public void StopToWall()
     {
         Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
         unitData.isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
     }
-  public  void Granade()
+    public void Granade()
     {
         if (unitData.hasGreandes == 0)
         { SetState(playerMoveState); return; }
-        {
-            Ray ray = unitData.follwouCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                Vector3 nextvec = hit.point - transform.position;
-                nextvec.y = 13;
-                GameObject instantGranade = Instantiate(unitData.granadeobj, transform.position, transform.rotation);
-                Rigidbody rigidGranade = instantGranade.GetComponent<Rigidbody>();
-                rigidGranade.AddForce(nextvec, ForceMode.Impulse);
-                rigidGranade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
 
-                unitData.hasGreandes--;
-                unitData.grenades[unitData.hasGreandes].SetActive(false);
-            }
-            SetState(playerMoveState);
+        Ray ray = unitData.follwouCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            Vector3 nextvec = hit.point - transform.position;
+            nextvec.y = 13;
+            GameObject instantGranade = Instantiate(unitData.granadeobj, transform.position, transform.rotation);
+            Rigidbody rigidGranade = instantGranade.GetComponent<Rigidbody>();
+            rigidGranade.AddForce(nextvec, ForceMode.Impulse);
+            rigidGranade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+
+            unitData.hasGreandes--;
+            unitData.grenades[unitData.hasGreandes].SetActive(false);
         }
+        SetState(playerMoveState);
     }
 }

@@ -78,7 +78,8 @@ public class MonsterManager : MonoBehaviour
                 int ranZone = Random.Range(1, 5);
                 GameObject instantenemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
                 Enemy enemy = instantenemy.GetComponent<Enemy>();
-                enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
+               // enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
+                enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
 
                 enemyList.RemoveAt(0);
                 yield return new WaitForSeconds(4);

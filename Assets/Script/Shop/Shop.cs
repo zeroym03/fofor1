@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     PlayerUnit enterPlayer;
+    PlayerTestUnit playerTestUnit;
     public RectTransform UIGroup { get; set; }
     [SerializeField] Animator animator;
     public Text talkText { get; set; }
@@ -17,7 +18,13 @@ public class Shop : MonoBehaviour
     public void Enter(PlayerUnit playerMob)
     {
         enterPlayer = playerMob;
-       // enterPlayer.isShop = true;
+        // enterPlayer.isShop = true;
+        UIGroup.anchoredPosition = Vector3.zero;
+    }
+    public void Enter(PlayerTestUnit playerMob)
+    {
+       // playerTestUnit = playerMob;
+        // enterPlayer.isShop = true;
         UIGroup.anchoredPosition = Vector3.zero;
     }
     public void Exit()
@@ -28,14 +35,25 @@ public class Shop : MonoBehaviour
     }
     public void ItemBuy(int index)
     {
+        //price = itemPrice[index];
+        //if (price > enterPlayer.coin)
+        //{
+        //    StopCoroutine(Talk());
+        //    StartCoroutine(Talk());
+        //    return;
+        //}
+        //enterPlayer.coin -= price;
+        //Vector3 renVec = Vector3.right * Random.Range(-3, 3) + Vector3.forward * Random.Range(-3, 3);
+        //Instantiate(itemObj[index], itemPos[index].position + renVec, itemPos[index].rotation);      
+
         price = itemPrice[index];
-        if (price > enterPlayer.coin)
+        if (price > GenericSinglngton<GameManager>.Instance.playerUnitData.coin)
         {
             StopCoroutine(Talk());
             StartCoroutine(Talk());
             return;
         }
-        enterPlayer.coin -= price;
+        GenericSinglngton<GameManager>.Instance.playerUnitData.coin -= price;
         Vector3 renVec = Vector3.right * Random.Range(-3, 3) + Vector3.forward * Random.Range(-3, 3);
         Instantiate(itemObj[index], itemPos[index].position + renVec, itemPos[index].rotation);
     }

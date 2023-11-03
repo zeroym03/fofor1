@@ -44,6 +44,7 @@ public class PlayerUnitData : MonoBehaviour
     public Rigidbody plrigidbody { get; set; }
     public MeshRenderer[] meshes { get; set; }
     public GameObject nearobjeact { get; set; }
+    public GameObject enterobjeact { get; set; }
     public Weapon equipWeapon { get; set; }
 
 

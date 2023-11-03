@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int score { get; set; } = 0;
     public bool isBattel { get; set; } = false;
     public PlayerUnit playerUnit { get; set; }
+    public PlayerUnitData playerUnitData { get; set; }
+    public PlayerTestUnit playerTestUnit{ get; set; }
     public GameObject player { get; set; }
     public BossMob boss { get; set; }
     public GameObject ItemShop { get; set; }
@@ -34,8 +36,11 @@ public class GameManager : MonoBehaviour
     {
         ShopSetting();
         GenericSinglngton<UIManager>.Instance.gameCam = Instantiate(Resources.Load("Camera/Game Camera") as GameObject);
-        player = Instantiate(Resources.Load("Character/Player").GameObject());
-        playerUnit = player.GetComponent<PlayerUnit>();
+       // player = Instantiate(Resources.Load("Character/Player").GameObject());
+        player = Instantiate(Resources.Load("Character/TestPlayer").GameObject());
+        playerTestUnit = player.GetComponent<PlayerTestUnit>();
+        //    playerUnit = player.GetComponent<PlayerUnit>();
+        playerUnitData = player.GetComponent<PlayerUnitData>();
         GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<GameCamera>().Set();
         GenericSinglngton<UIManager>.Instance.UIGameStart();
     }

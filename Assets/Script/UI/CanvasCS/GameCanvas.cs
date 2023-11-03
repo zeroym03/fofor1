@@ -84,11 +84,13 @@ public class GameCanvas : MonoBehaviour
     }//GameMain
     void PlayerHPText()
     {
-        currentHpText.text = GenericSinglngton<GameManager>.Instance.playerUnit.health + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.maxhealth;
+        //   currentHpText.text = GenericSinglngton<GameManager>.Instance.playerUnit.health + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.maxhealth;
+          currentHpText.text = GenericSinglngton<GameManager>.Instance.playerUnitData.health + " / " + GenericSinglngton<GameManager>.Instance.playerUnitData.maxhealth;
     }//GameMain
     void CurrentCoinText()
     {
-        currentCoinText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.playerUnit.coin);
+        //currentCoinText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.playerUnit.coin);
+        currentCoinText.text = string.Format("{0:n0}", GenericSinglngton<GameManager>.Instance.playerUnitData.coin);
     }//GameMain
     void EnemyTextCH()
     {
@@ -99,22 +101,39 @@ public class GameCanvas : MonoBehaviour
     }//GameMain
     void weaponImage()
     {
-        if (GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon == null)
+        //if (GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon == null)
+        //{
+        //    currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+        //}
+        //else if (GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon.type == Weapon.Type.Melee)
+        //{
+        //    currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+        //}
+        //else
+        //{
+        //    currentAmmoText.text = GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon.curAmmo + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+        //}
+        //hammerImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[0] ? 1 : 0);
+        //handgunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[1] ? 1 : 0);
+        //machineGunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[2] ? 1 : 0);
+        //controlRImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasGreandes > 0 ? 1 : 0);       
+
+        if (GenericSinglngton<GameManager>.Instance.playerUnitData.equipWeapon == null)
         {
-            currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+            currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnitData.ammo;
         }
-        else if (GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon.type == Weapon.Type.Melee)
+        else if (GenericSinglngton<GameManager>.Instance.playerUnitData.equipWeapon.type == Weapon.Type.Melee)
         {
-            currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+            currentAmmoText.text = "- / " + GenericSinglngton<GameManager>.Instance.playerUnitData.ammo;
         }
         else
         {
-            currentAmmoText.text = GenericSinglngton<GameManager>.Instance.playerUnit.equipWeapon.curAmmo + " / " + GenericSinglngton<GameManager>.Instance.playerUnit.ammo;
+            currentAmmoText.text = GenericSinglngton<GameManager>.Instance.playerUnitData.equipWeapon.curAmmo + " / " + GenericSinglngton<GameManager>.Instance.playerUnitData.ammo;
         }
-        hammerImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[0] ? 1 : 0);
-        handgunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[1] ? 1 : 0);
-        machineGunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasWeapons[2] ? 1 : 0);
-        controlRImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnit.hasGreandes > 0 ? 1 : 0);
+        hammerImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnitData.hasWeapons[0] ? 1 : 0);
+        handgunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnitData.hasWeapons[1] ? 1 : 0);
+        machineGunImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnitData.hasWeapons[2] ? 1 : 0);
+        controlRImege.color = new Color(1, 1, 1, GenericSinglngton<GameManager>.Instance.playerUnitData.hasGreandes > 0 ? 1 : 0);
 
     }//GameMain
     void BossHPBarCH()
