@@ -10,7 +10,6 @@ public class HandGun : Weapon
    public GameObject bullet { get; set; }
     GameObject bulletCase;
     int _damege = 17;
-    public bool isshot = false;
     
     private void Awake()
     {
@@ -41,5 +40,6 @@ public class HandGun : Weapon
             bulletCasePos.forward * Random.Range(-3, -2) + Vector3.up * Random.Range(-3, -2);
         CaseRigid.AddForce(casevec, ForceMode.Impulse);
         CaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
+   
     }
 }

@@ -50,7 +50,8 @@ public class MonsterManager : MonoBehaviour
             enemyCntD++;
             GameObject instantenemy = Instantiate(enemies[3], enemyZones[1].position, enemyZones[1].rotation);
             Enemy enemy = instantenemy.GetComponent<Enemy>();
-            enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
+           //enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
+            enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
 
             GenericSinglngton<GameManager>.Instance.boss = instantenemy.GetComponent<BossMob>();
         }

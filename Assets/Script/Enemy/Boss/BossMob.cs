@@ -30,9 +30,10 @@ public class BossMob : Enemy
     {
         if (isDead)
         {
+            
             StopAllCoroutines();
             animator.SetTrigger("doDie");
-            GenericSinglngton<UIManager>.Instance.WeaponPanel.SetActive(true);
+            Instantiate(GenericSinglngton<UIManager>.Instance.WeaponPanel);
             Destroy(this.gameObject);
             return;
         }

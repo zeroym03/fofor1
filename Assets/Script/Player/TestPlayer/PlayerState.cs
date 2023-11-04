@@ -63,6 +63,7 @@ public class SwapState : PlayerState
         base.StateStart(playerUnit);
         player.Swap();
     }
+   
 }
 public class AttackState : PlayerState
 {
@@ -81,6 +82,15 @@ public class ReloadState : PlayerState
     {
         base.StateStart(playerUnit);
         player.Reload();
+    }
+    public override void StateUpDate()
+    {
+        SwapStateSet();
+    }
+    void SwapStateSet()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        { player.SetState(player.playerDodgeState); }
     }
 }
 public class DieState : PlayerState

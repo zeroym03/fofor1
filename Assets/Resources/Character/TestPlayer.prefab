@@ -54,7 +54,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!65 &389966656777927731
 BoxCollider:
@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 7018173627438382120}
   - {fileID: 7018173626698052622}
   granadeobj: {fileID: 7412157949401285219, guid: d6d0497e18cb8eb4bab39bb4466923ce, type: 3}
+  follwouCamera: {fileID: 0}
   maxcoin: 2147483647
   maxhasGreandes: 4
   fireDelay: 0
@@ -20217,7 +20218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7079840921949427654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.978, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.72, z: -0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21157,7 +21158,6 @@ MonoBehaviour:
   rate: 0.3
   bulletpos: {fileID: 7079840920670094940}
   bulletCasePos: {fileID: 7079840921949427655}
-  isshot: 0
 --- !u!114 &7079840922503581775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21165,7 +21165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4772856226999887209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9d9bef3f7b55242a52a79c8ae83668, type: 3}
   m_Name: 

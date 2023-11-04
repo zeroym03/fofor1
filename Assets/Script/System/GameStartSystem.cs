@@ -33,11 +33,11 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
         GenericSinglngton<UIManager>.Instance.menuCam = Instantiate(Resources.Load("Camera/Menu Camera") as GameObject);
         GenericSinglngton<UIManager>.Instance.gamePanel.SetActive(false);
         GenericSinglngton<UIManager>.Instance.gameOverPanel.SetActive(false);
-
+        GenericSinglngton<UIManager>.Instance.WeaponPanel = Resources.Load("Canvas/WeaponUpCanvas") as GameObject;
      //   Instantiate(Resources.Load("Canvas/WeaponUpCanvas"));  //test
 
 
-   
+
     }
 
 }
