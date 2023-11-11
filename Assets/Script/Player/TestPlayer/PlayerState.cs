@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerState
 {
@@ -21,18 +22,22 @@ public class PlayerMoveState : PlayerState
     }
     public void StateSetMove()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        { player.SetState(player.playerDodgeState); }
+        if (!EventSystem.current.IsPointerOverGameObject())//마우스포지션이 UI위치에 있으면 밑에 코드를 실행하지않는 !함수 
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            { player.SetState(player.playerDodgeState); }
+            if (Input.GetKey(KeyCode.Mouse0))
+            { player.SetState(player.attackState); }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            { player.SetState(player.granadeState); }
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
         { player.SetState(player.swapState); }//무기바꾸기
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         { player.SetState(player.interationState); }
-        if (Input.GetKeyDown(KeyCode.R)) 
+        if (Input.GetKeyDown(KeyCode.R))
         { player.SetState(player.ReloadState); }
-        if (Input.GetKey(KeyCode.Mouse0))
-        { player.SetState(player.attackState); }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        { player.SetState(player.granadeState); }
+
     }
 }
 public class PlayerDodgeState : PlayerState
@@ -40,12 +45,12 @@ public class PlayerDodgeState : PlayerState
     public override void StateStart(PlayerTestUnit playerUnit)
     {
         base.StateStart(playerUnit);
-        player.Dodge();
-        player.StopToWall();
+        player.Dodge();//애니매이션등 1회성함수
     }
     public override void StateUpDate()
     {
-        player.DodgeMove();
+        player.DodgeMove();//이동 자체연속함수
+        player.StopToWall();
     }
 }
 public class InterationState : PlayerState

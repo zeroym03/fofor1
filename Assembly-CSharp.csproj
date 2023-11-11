@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerUnit.cs" />
-    <Compile Include="Assets\Script\Manager\MonsterMAnager.cs" />
+    <Compile Include="Assets\Script\Manager\MonsterManager.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\GamePanel.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\MenuPanel.cs" />
     <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy1.cs" />

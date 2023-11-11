@@ -14,7 +14,7 @@ public class PlayerUnitData : MonoBehaviour
 
     public int ammo { get; set; } = 100;//프로포티 초기화 필요
     public int coin { get; set; } = 10000;
-    public int health { get; set; } = 10;
+    public int health { get; set; } = 101;
     public int hasGreandes { get; set; } = 0;
     public int maxammo { get; set; } = 300;
     public int maxhealth { get; set; } = 300;

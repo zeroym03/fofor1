@@ -187,6 +187,7 @@ public class PlayerUnit : MonoBehaviour  //상속 오버라이드
         }
         if (isBossAtk)
         {
+            Debug.Log(plrigidbody);
             plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse);
         }
         yield return new WaitForSeconds(1);

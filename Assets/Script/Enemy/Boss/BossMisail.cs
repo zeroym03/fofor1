@@ -10,6 +10,10 @@ public class BossMisail :Bullet
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+      if (transform.position.y <= 2 )
+        {
+            Destroy(gameObject);
+        }
         StartCoroutine(MisailDes());
     }
     private void Update()

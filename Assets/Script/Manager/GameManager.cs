@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public void BaseSet()
     {
           isBattel = false;
-        //stage = 0;
+        stage = 4; // 0로 변경필요
         score = 0;
     }
     public void GameStart()

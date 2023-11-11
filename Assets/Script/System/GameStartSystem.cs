@@ -7,11 +7,6 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
 {
 
     public GameObject canvas { get; set; }
-    public GameObject enemyZon { get; set; }
-    public GameObject itemShop { get; set; }
-    public GameObject weaponShop { get; set; }
-    public GameObject zone { get; set; }
-
     void Awake()
     {
         

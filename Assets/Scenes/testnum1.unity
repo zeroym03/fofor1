@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 9584d5eb09f7dd84cab818c1636505b2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8ee393975d1b3c140844806f69753010, type: 2}
 --- !u!1 &500686959
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +173,8 @@ GameObject:
   m_Name: Wall 1
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!4 &537244760
 Transform:
@@ -576,11 +576,11 @@ GameObject:
   - component: {fileID: 1114179850}
   - component: {fileID: 1114179853}
   m_Layer: 10
-  m_Name: Cube 4
+  m_Name: Wall 4
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!4 &1114179849
 Transform:
@@ -693,8 +693,8 @@ GameObject:
   m_Name: Wall 2
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!4 &1474175375
 Transform:
@@ -851,8 +851,8 @@ GameObject:
   m_Name: Wall 3
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!4 &1686068260
 Transform:
@@ -861,9 +861,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686068259}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -50, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 20, z: 100}
+  m_LocalScale: {x: 10, y: 20, z: 100.00001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1919986562}

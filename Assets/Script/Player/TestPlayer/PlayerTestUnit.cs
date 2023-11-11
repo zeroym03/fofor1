@@ -28,6 +28,7 @@ public class PlayerTestUnit : MonoBehaviour
     }
     private void Start()
     {
+        unitData.plrigidbody = GetComponent<Rigidbody>();
         unitData.meshes = this.gameObject.GetComponentsInChildren<MeshRenderer>();
         SetState(playerMoveState);
     }
@@ -99,6 +100,7 @@ public class PlayerTestUnit : MonoBehaviour
         }
         if (isBossAtk)
         {
+            Debug.Log(unitData.plrigidbody.gameObject.name);
             unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse);
         }
         yield return new WaitForSeconds(1);
@@ -177,11 +179,14 @@ public class PlayerTestUnit : MonoBehaviour
     }
     public void DodgeMove()//Dodge
     {
-        if (unitData.DodgeVec == Vector3.zero)
+        if ( unitData.isBorder == false)
         {
-            transform.position += this.gameObject.transform.forward * unitData.speed * Time.deltaTime;
+            if (unitData.DodgeVec == Vector3.zero)
+            {
+                transform.position += this.gameObject.transform.forward * unitData.speed * Time.deltaTime;
+            }
+            transform.position += unitData.DodgeVec * unitData.speed * Time.deltaTime;
         }
-        transform.position += unitData.DodgeVec * unitData.speed * Time.deltaTime;
     }
     IEnumerator DodgeOut()
     {

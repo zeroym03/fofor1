@@ -21158,18 +21158,6 @@ MonoBehaviour:
   rate: 0.3
   bulletpos: {fileID: 7079840920670094940}
   bulletCasePos: {fileID: 7079840921949427655}
---- !u!114 &7079840922503581775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772856226999887209}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9d9bef3f7b55242a52a79c8ae83668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5293778914343567315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2285952976136801637, guid: a2e051660762cbe4494c17a095a95e10, type: 3}
