@@ -92,6 +92,7 @@ public class MonsterManager : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
         GenericSinglngton<GameManager>.Instance.boss = null;
-        GenericSinglngton<GameManager>.Instance.StageEnd();
+
+        //GenericSinglngton<GameManager>.Instance.StageEnd(); //UIButtenManager에서 스탑코루틴을하는데 실행됨 ???
     }
 }

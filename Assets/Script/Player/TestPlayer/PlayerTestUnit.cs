@@ -71,7 +71,7 @@ public class PlayerTestUnit : MonoBehaviour
         }
         else if (other.tag == "EnemyBullet")
         {
-            DamegeStart(other);// 우야냐
+            DamegeStart(other);// 
         }
     }
     void DamegeStart(Collider other)
@@ -100,8 +100,8 @@ public class PlayerTestUnit : MonoBehaviour
         }
         if (isBossAtk)
         {
-            Debug.Log(unitData.plrigidbody.gameObject.name);
-            unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse);
+            Debug.Log("ㅁㄴㅇ");//작동은함
+            unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse); // 이동을안함???
         }
         yield return new WaitForSeconds(1);
         foreach (MeshRenderer mesh in unitData.meshes)

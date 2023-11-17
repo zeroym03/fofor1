@@ -9,7 +9,7 @@ public class BossRock : Bullet
     float scalevalue;
     bool isShoot = false;
     private void Awake()
-    {
+    { //컴퓨터 성능에따라 바뀌는듯함 확인필요
         body = GetComponent<Rigidbody>();
         StartCoroutine(GainPowerTimer());
         StartCoroutine(GainPower());

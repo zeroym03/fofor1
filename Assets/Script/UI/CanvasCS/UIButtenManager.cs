@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIButtenManager : MonoBehaviour
 {
     public void GameReStart()
     {
-        GenericSinglngton<GameManager>.Instance.ReStart();
+            SceneManager.LoadScene(0);
+           StopAllCoroutines();
     }
     public void GameStartButten()
     {

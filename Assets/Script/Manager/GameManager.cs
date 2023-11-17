@@ -69,10 +69,7 @@ public class GameManager : MonoBehaviour
         isBattel = true;
         GenericSinglngton<MonsterManager>.Instance.inBattelStart();
     }
-    public void ReStart()//UI
-    {
-        SceneManager.LoadScene(0);
-    }
+  
     public void StageEnd()// game
     {
         //playerUnit.transform.position = Vector3.zero;
