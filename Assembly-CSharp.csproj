@@ -57,28 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
-    <Compile Include="Assets\Script\Player\PlayerUnit.cs" />
     <Compile Include="Assets\Script\Manager\MonsterMAnager.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\GamePanel.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\MenuPanel.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy1.cs" />
     <Compile Include="Assets\Script\Player\Weapon\GunWeapon.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerState.cs" />
     <Compile Include="Assets\Script\VamserWeapon\CanvaseItemUpButten.cs" />
     <Compile Include="Assets\Script\Player\Grenade.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\MenuScoreText.cs" />
     <Compile Include="Assets\Script\Player\Orbit.cs" />
     <Compile Include="Assets\Script\Player\PlayerByItem.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy2.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\Player.cs" />
     <Compile Include="Assets\Script\Shop\ItemShopText.cs" />
     <Compile Include="Assets\Script\VamserWeapon\VAMSWeapon.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerEnemy.cs" />
     <Compile Include="Assets\Script\Manager\GetKeyCodeManager.cs" />
     <Compile Include="Assets\Script\Player\TestPlayer\PlayerUnitData.cs" />
     <Compile Include="Assets\Script\Player\TestPlayer\PlayerTestUnit.cs" />
     <Compile Include="Assets\Script\Player\Weapon\MeleeWeapon.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerBase.cs" />
     <Compile Include="Assets\Script\UI\CameraCS\GameCamera.cs" />
     <Compile Include="Assets\Script\UI\CameraCS\MenuCamera.cs" />
     <Compile Include="Assets\Script\Player\Weapon\HandGun.cs" />
@@ -87,11 +80,9 @@
     <Compile Include="Assets\Script\UI\ZoneCS\EnemyZone.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRock.cs" />
     <Compile Include="Assets\Script\System\GameStartSystem.cs" />
-    <Compile Include="Assets\Test\PlayerManager_State\PlayerManagerScene.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\GameOverPanel.cs" />
     <Compile Include="Assets\Script\Player\PlayerAni.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMob.cs" />
-    <Compile Include="Assets\Script\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Script\UI\CanvasCS\UIButtenManager.cs" />
     <Compile Include="Assets\Script\System\Missile.cs" />
     <Compile Include="Assets\Script\UI\ZoneCS\StartZone.cs" />

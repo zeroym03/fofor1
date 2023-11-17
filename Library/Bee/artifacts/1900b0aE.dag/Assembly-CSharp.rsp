@@ -355,14 +355,12 @@
 "Assets/Script/Manager/GenericSinglngton.cs"
 "Assets/Script/Manager/GetKeyCodeManager.cs"
 "Assets/Script/Manager/MonsterMAnager.cs"
-"Assets/Script/Manager/PlayerManager.cs"
 "Assets/Script/Manager/UIManager.cs"
 "Assets/Script/Player/Grenade.cs"
 "Assets/Script/Player/Item.cs"
 "Assets/Script/Player/Orbit.cs"
 "Assets/Script/Player/PlayerAni.cs"
 "Assets/Script/Player/PlayerByItem.cs"
-"Assets/Script/Player/PlayerUnit.cs"
 "Assets/Script/Player/TestPlayer/PlayerState.cs"
 "Assets/Script/Player/TestPlayer/PlayerTestUnit.cs"
 "Assets/Script/Player/TestPlayer/PlayerUnitData.cs"
@@ -390,13 +388,6 @@
 "Assets/Script/VamserWeapon/HandGunUP.cs"
 "Assets/Script/VamserWeapon/VAMSUI.cs"
 "Assets/Script/VamserWeapon/VAMSWeapon.cs"
-"Assets/Test/PlayerManager_State/Player.cs"
-"Assets/Test/PlayerManager_State/PlayerBase.cs"
-"Assets/Test/PlayerManager_State/PlayerEnemy.cs"
-"Assets/Test/PlayerManager_State/PlayerEnemy1.cs"
-"Assets/Test/PlayerManager_State/PlayerEnemy2.cs"
-"Assets/Test/PlayerManager_State/PlayerManagerScene.cs"
-"Assets/Test/PlayerManager_State/PlayerState.cs"
 -langversion:9.0
 
 /deterministic

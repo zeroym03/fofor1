@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int stage { get; set; } = 4;
     public int score { get; set; } = 0;
     public bool isBattel { get; set; } = false;
-    public PlayerUnit playerUnit { get; set; }
     public PlayerUnitData playerUnitData { get; set; }
     public PlayerTestUnit playerTestUnit{ get; set; }
     public GameObject player { get; set; }

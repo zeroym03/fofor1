@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    PlayerUnit enterPlayer;
     PlayerTestUnit playerTestUnit;
     public RectTransform UIGroup { get; set; }
     [SerializeField] Animator animator;
@@ -15,12 +14,7 @@ public class Shop : MonoBehaviour
     public GameObject[] itemObj;
     public string[] talkData;
     int price;
-    public void Enter(PlayerUnit playerMob)
-    {
-        enterPlayer = playerMob;
-        // enterPlayer.isShop = true;
-        UIGroup.anchoredPosition = Vector3.zero;
-    }
+
     public void Enter(PlayerTestUnit playerMob)
     {
        // playerTestUnit = playerMob;
