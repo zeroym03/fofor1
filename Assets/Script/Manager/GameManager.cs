@@ -28,17 +28,15 @@ public class GameManager : MonoBehaviour
     public void BaseSet()
     {
           isBattel = false;
-        stage = 4; // 0로 변경필요
+        stage = 0; // 0로 변경필요
         score = 0;
     }
     public void GameStart()
     {
         ShopSetting();
         GenericSinglngton<UIManager>.Instance.gameCam = Instantiate(Resources.Load("Camera/Game Camera") as GameObject);
-       // player = Instantiate(Resources.Load("Character/Player").GameObject());
         player = Instantiate(Resources.Load("Character/TestPlayer").GameObject());
         playerTestUnit = player.GetComponent<PlayerTestUnit>();
-        //    playerUnit = player.GetComponent<PlayerUnit>();
         playerUnitData = player.GetComponent<PlayerUnitData>();
         GenericSinglngton<UIManager>.Instance.gameCam.GetComponent<GameCamera>().Set();
         GenericSinglngton<UIManager>.Instance.UIGameStart();
@@ -57,6 +55,8 @@ public class GameManager : MonoBehaviour
     }
     public void StageStart()//game
     {
+        Debug.Log("StageStart");
+        GenericSinglngton<MonsterManager>.Instance.stageEnd = false;
         stage++;
         ItemShop.SetActive(false);
         WeaponShop.SetActive(false);
@@ -71,8 +71,9 @@ public class GameManager : MonoBehaviour
   
     public void StageEnd()// game
     {
-        //playerUnit.transform.position = Vector3.zero;
-      if(playerTestUnit!= null)  playerTestUnit.transform.position = Vector3.zero;
+        Debug.Log("StageEnd");
+
+        if (playerTestUnit!= null)  playerTestUnit.transform.position = Vector3.zero;
         isBattel = false;
         ItemShop.SetActive(true);
         WeaponShop.SetActive(true);

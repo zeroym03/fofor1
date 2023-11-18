@@ -9,22 +9,25 @@ public class BossRock : Bullet
     float scalevalue;
     bool isShoot = false;
     private void Awake()
-    { //컴퓨터 성능에따라 바뀌는듯함 확인필요
+    {
         body = GetComponent<Rigidbody>();
+    }
+    private void Start()
+    {
         StartCoroutine(GainPowerTimer());
         StartCoroutine(GainPower());
     }
     IEnumerator GainPowerTimer()
     {
-yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(2.2f);
         isShoot = true;
     }
     IEnumerator GainPower()
     {
         while (!isShoot)
         {
-            angularPawer += 0.02f;
-            scalevalue += 0.005f;//0.002
+            angularPawer += 2.5f * Time.deltaTime;
+            scalevalue += 1f * Time.deltaTime;//0.002
             transform.localScale = Vector3.one * scalevalue;
             body.AddTorque(transform.right * angularPawer, ForceMode.Acceleration);
             yield return null;

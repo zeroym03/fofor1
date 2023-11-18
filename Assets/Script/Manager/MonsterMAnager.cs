@@ -10,6 +10,8 @@ public class MonsterManager : MonoBehaviour
 
     public GameObject[] enemies = new GameObject[4];
     public Transform[] enemyZones { get; set; }
+  public  bool stageEnd { get; set; } = true;
+
     public int enemyCntA { get; set; } = 0;
     public int enemyCntB { get; set; } = 0;
     public int enemyCntC { get; set; } = 0;
@@ -35,22 +37,14 @@ public class MonsterManager : MonoBehaviour
         enemies[2] = Resources.Load("Character/Enemy C").GameObject();
         enemies[3] = Resources.Load("Character/Enemy D").GameObject();
     }
-   public void inBattelStart()
+    public void inBattelStart()
     {
-        StartCoroutine(inBattel());
-    }
-    IEnumerator inBattel() //game 
-    {
-        foreach (var enemy in enemyZones)
-        {
-            Debug.Log(enemy.gameObject.transform.position);
-        }
         if (GenericSinglngton<GameManager>.Instance.stage % 5 == 0)
         {
             enemyCntD++;
             GameObject instantenemy = Instantiate(enemies[3], enemyZones[1].position, enemyZones[1].rotation);
             Enemy enemy = instantenemy.GetComponent<Enemy>();
-           //enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
+
             enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
 
             GenericSinglngton<GameManager>.Instance.boss = instantenemy.GetComponent<BossMob>();
@@ -73,26 +67,37 @@ public class MonsterManager : MonoBehaviour
                         enemyCntC++;
                         break;
                 }
+                Invoke("enemySpown", 4);
             }
-            while (enemyList.Count > 0)
-            {
-                int ranZone = Random.Range(1, 5);
-                GameObject instantenemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
-                Enemy enemy = instantenemy.GetComponent<Enemy>();
-               // enemy.target = GenericSinglngton<GameManager>.Instance.playerUnit.transform;
-                enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
+        }
+    }
+    void enemySpown()
+    {
+        int ranZone = Random.Range(1, 5);
+        GameObject instantenemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
+        Enemy enemy = instantenemy.GetComponent<Enemy>();
+        enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
+        enemyList.RemoveAt(0);
+    }
+    private void Update()
+    {
+        StageEndCheck();
+    }
+    void StageEndCheck()
+    {
+        if (stageEnd == true) return;
 
-                enemyList.RemoveAt(0);
-                yield return new WaitForSeconds(4);
-            }
-        }
-        while (enemyCntA + enemyCntB + enemyCntC + enemyCntD > 0)
+        if (enemyCntA + enemyCntB + enemyCntC + enemyCntD <= 0&&stageEnd == false)
         {
-            yield return null;
+            stageEnd = true;
+            StageEnd();
         }
-        yield return new WaitForSeconds(2);
+    }
+    void StageEnd()
+    {
         GenericSinglngton<GameManager>.Instance.boss = null;
 
-        //GenericSinglngton<GameManager>.Instance.StageEnd(); //UIButtenManager에서 스탑코루틴을하는데 실행됨 ???
+        GenericSinglngton<GameManager>.Instance.StageEnd(); //UIButtenManager에서 스탑코루틴을하는데 실행됨 ???
     }
 }
+

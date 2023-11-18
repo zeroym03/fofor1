@@ -9,29 +9,16 @@ public class GameStartSystem : MonoBehaviour //시작 생성 관리 시스템
     public GameObject canvas { get; set; }
     void Awake()
     {
-        
+            StopAllCoroutines();//스탑
+
         if (PlayerPrefs.HasKey("MaxScore"))
         {
             PlayerPrefs.SetInt("MaxScore", 0);
         }
         canvas = Instantiate(Resources.Load("Canvas/GameCanvas") as GameObject);
-
-        GenericSinglngton<MonsterManager>.Instance.enemyZones    = Instantiate(Resources.Load("enemyZon") as GameObject).GetComponentsInChildren<Transform>();
-        GenericSinglngton<MonsterManager>.Instance.AllSet();
-
-        GenericSinglngton<GameManager>.Instance.BaseSet();
-        GenericSinglngton<GameManager>.Instance.WeaponShop = Instantiate(Resources.Load("Shop/Weapon Shop") as GameObject);
-        GenericSinglngton<GameManager>.Instance.ItemShop = Instantiate(Resources.Load("Shop/Item Shop") as GameObject);
-        GenericSinglngton<GameManager>.Instance.StartZon = Instantiate(Resources.Load("Zone") as GameObject);
-
-
-        GenericSinglngton<UIManager>.Instance.menuCam = Instantiate(Resources.Load("Camera/Menu Camera") as GameObject);
-        GenericSinglngton<UIManager>.Instance.gamePanel.SetActive(false);
-        GenericSinglngton<UIManager>.Instance.gameOverPanel.SetActive(false);
-        GenericSinglngton<UIManager>.Instance.WeaponPanel = Resources.Load("Canvas/WeaponUpCanvas") as GameObject;
-     //   Instantiate(Resources.Load("Canvas/WeaponUpCanvas"));  //test
-
-
+        GenericSinglngton<PlaySceneManager>.Instance.SceneSetMonsterManager();
+        GenericSinglngton<PlaySceneManager>.Instance.SceneSetGameManager();
+        GenericSinglngton<PlaySceneManager>.Instance.SceneSetUIManager();
 
     }
 

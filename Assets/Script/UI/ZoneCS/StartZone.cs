@@ -9,6 +9,7 @@ public class StartZone : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("OnTriggerEnter");
           GenericSinglngton<GameManager>.Instance.StageStart();
         }
     }

@@ -8,8 +8,7 @@ public class UIButtenManager : MonoBehaviour
 {
     public void GameReStart()
     {
-            SceneManager.LoadScene(0);
-           StopAllCoroutines();
+        GenericSinglngton<PlaySceneManager>.Instance.SceneEnd();
     }
     public void GameStartButten()
     {

@@ -100,9 +100,9 @@ public class PlayerTestUnit : MonoBehaviour
         }
         if (isBossAtk)
         {
-            Debug.Log("ㅁㄴㅇ");//작동은함
             unitData.plrigidbody.AddForce(transform.forward * -25, ForceMode.Impulse); // 이동을안함???
         }
+        //보스공격을 트리거
         yield return new WaitForSeconds(1);
         foreach (MeshRenderer mesh in unitData.meshes)
         {
@@ -295,6 +295,7 @@ public class PlayerTestUnit : MonoBehaviour
         {
             playerAni.DoDie();
             unitData.isDead = true;
+
             GenericSinglngton<GameManager>.Instance.GameOver();
         }
     }
