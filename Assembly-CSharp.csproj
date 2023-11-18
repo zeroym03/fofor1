@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\UI\CameraCS\GameCamera.cs" />
     <Compile Include="Assets\Script\UI\CameraCS\MenuCamera.cs" />
     <Compile Include="Assets\Script\Player\Weapon\HandGun.cs" />
+    <Compile Include="Assets\Script\Manager\PlaySceneManager.cs" />
     <Compile Include="Assets\Script\VamserWeapon\HandGunUP.cs" />
     <Compile Include="Assets\Script\System\Bullet.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRock.cs" />
@@ -97,7 +98,6 @@
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossMisail.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Manager\PlaySceneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

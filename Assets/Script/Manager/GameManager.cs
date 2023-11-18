@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public int stage { get; set; } = 4;
+    public int stage { get; set; } = 0;
     public int score { get; set; } = 0;
     public bool isBattel { get; set; } = false;
     public PlayerUnitData playerUnitData { get; set; }
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public void BaseSet()
     {
           isBattel = false;
-        stage = 0; // 0로 변경필요
+        stage = 2; // 0로 변경필요
         score = 0;
     }
     public void GameStart()
@@ -71,8 +71,6 @@ public class GameManager : MonoBehaviour
   
     public void StageEnd()// game
     {
-        Debug.Log("StageEnd");
-
         if (playerTestUnit!= null)  playerTestUnit.transform.position = Vector3.zero;
         isBattel = false;
         ItemShop.SetActive(true);

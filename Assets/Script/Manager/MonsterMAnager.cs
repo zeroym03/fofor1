@@ -67,8 +67,8 @@ public class MonsterManager : MonoBehaviour
                         enemyCntC++;
                         break;
                 }
-                Invoke("enemySpown", 4);
             }
+                Invoke("enemySpown", 4);
         }
     }
     void enemySpown()
@@ -78,6 +78,7 @@ public class MonsterManager : MonoBehaviour
         Enemy enemy = instantenemy.GetComponent<Enemy>();
         enemy.target = GenericSinglngton<GameManager>.Instance.playerTestUnit.transform;
         enemyList.RemoveAt(0);
+        Invoke("enemySpown", 4);
     }
     private void Update()
     {
@@ -93,11 +94,11 @@ public class MonsterManager : MonoBehaviour
             StageEnd();
         }
     }
-    void StageEnd()
+ void  StageEnd()
     {
         GenericSinglngton<GameManager>.Instance.boss = null;
-
-        GenericSinglngton<GameManager>.Instance.StageEnd(); //UIButtenManager에서 스탑코루틴을하는데 실행됨 ???
+        Invoke("GenericSinglngton<GameManager>.Instance.StageEnd()",3);
+       // GenericSinglngton<GameManager>.Instance.StageEnd(); //UIButtenManager에서 스탑코루틴을하는데 실행됨 ???
     }
 }
 
